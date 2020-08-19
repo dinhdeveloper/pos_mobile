@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:layout_gravity="center"
+    android:gravity="center"
+    android:id="@+id/activityLogin"
+    android:background="@drawable/login_background"
+    tools:context=".activity.LoginActivity">
+
+    <LinearLayout
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <TextView
+            android:gravity="center"
+            android:text="Quản lý bán hàng"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:layout_marginHorizontal="50dp"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        <ImageView
+            android:src="@drawable/computer_on_desk"
+            android:layout_gravity="center"
+            android:layout_marginTop="30dp"
+            android:layout_width="250dp"
+            android:layout_height="200dp"/>
+    </LinearLayout>
+
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_marginTop="30dp"
+        android:layout_gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_marginBottom="30dp"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="450dp"
+            android:background="@drawable/custom_edittext_background_login"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/ic_person_login_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/edtLoginName"
+                android:layout_marginLeft="@dimen/dp10"
+                android:textSize="30dp"
+                android:layout_weight="1"
+                android:inputType="text"
+                android:hint="Đăng nhập"
+                android:textColorHint="@color/colorBBB"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/dp5"
+                android:layout_width="400dp"
+                android:background="@color/white"
+                android:layout_height="45dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:layout_width="450dp"
+            android:background="@drawable/custom_edittext_background_login"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_gravity="center"
+                android:src="@drawable/ic_lock_24"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <EditText
+                android:id="@+id/edtLoginPassowrd"
+                android:layout_marginLeft="@dimen/dp10"
+                android:textSize="30dp"
+                android:layout_weight="1"
+                android:inputType="textPassword"
+                android:hint="Mật Khẩu"
+                android:textColorHint="@color/colorBBB"
+                android:layout_gravity="center"
+                android:layout_marginVertical="@dimen/dp5"
+                android:layout_width="400dp"
+                android:background="@color/white"
+                android:layout_height="45dp"/>
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/btnLoginButton"
+            android:layout_marginTop="30dp"
+            android:layout_gravity="center"
+            android:background="@drawable/custom_background_button_login"
+            android:layout_width="448dp"
+            android:layout_height="50dp">
+            <TextView
+                android:text="Đăng nhập"
+                android:textStyle="bold"
+                android:textSize="30dp"
+                android:textColor="@color/titleTabColor"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/hinhnen"
+    android:id="@+id/fragmentHome"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/background_toolbar_home"
+        android:minHeight="?attr/actionBarSize"
+        android:paddingRight="8dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imageNavLeft"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_menu_24" />
+
+                <ImageView
+                    android:id="@+id/imvHome"
+                    android:layout_width="35dp"
+                    android:layout_marginHorizontal="@dimen/dp10"
+                    android:layout_height="35dp"
+                    android:src="@drawable/ic_store_home" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Khách hàng"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_toolbar"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"/>
+            </LinearLayout>
+        </LinearLayout>
+    </android.support.v7.widget.Toolbar>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_margin="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_gravity="center"
+                android:background="@color/white"
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="60dp">
+                <ImageView
+                    android:layout_marginLeft="@dimen/dp20"
+                    android:src="@drawable/logo_congty"
+                    android:layout_width="100dp"
+                    android:layout_height="match_parent"/>
+
+                <LinearLayout
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="30dp"
+                    android:paddingHorizontal="10dp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:background="@drawable/custom_background_search"
+                    android:layout_width="300dp"
+                    android:layout_height="40dp">
+                    <ImageView
+                        android:id="@+id/image_search"
+                        android:src="@drawable/ic_search_48"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"/>
+                    <EditText
+                        android:id="@+id/text_search"
+                        android:imeOptions="actionSearch"
+                        android:inputType="text"
+                        android:background="@color/white"
+                        android:layout_marginHorizontal="5dp"
+                        android:layout_weight="1"
+                        android:hint="Tên khách hàng, số điện thoại..."
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"/>
+                    <ImageView
+                        android:id="@+id/image_close"
+                        android:padding="@dimen/dp5"
+                        android:src="@drawable/ic_delete_circle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/addLayout"
+                    android:layout_marginRight="@dimen/dp20"
+                    android:layout_weight="1"
+                    android:layout_gravity="center"
+                    android:background="@drawable/custom_background_button_login"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp">
+                    <TextView
+                        android:text="Thêm"
+                        android:textStyle="bold"
+                        android:textSize="16dp"
+                        android:textColor="@color/titleTabColor"
+                        android:layout_gravity="center"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+
+
+            </LinearLayout>
+            <!--end toolbar-->
+            <View
+                android:background="@color/colorSuccessButton"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"/>
+            <LinearLayout
+                android:background="@color/white"
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycler_view_customer"
+                    android:background="@drawable/custom_background_rc"
+                    android:fitsSystemWindows="true"
+                    android:clipToPadding="false"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbarTrackVertical="@drawable/scrollbar_vertical_track"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true"
+                    android:scrollbarSize="@dimen/dp10"
+                    android:fadeScrollbars="false"
+                    android:paddingRight="@dimen/dp10"
+                    android:scrollbarStyle="outsideOverlay"
+                    android:scrollbarThumbVertical="@drawable/scrollbar_vertical_thumb"
+                    android:scrollbars="vertical"
+                    android:verticalScrollbarPosition="right" />
+            </LinearLayout>
+
+        </LinearLayout>
+        <!--end layout left-->
+        <LinearLayout
+            android:layout_weight="2"
+            android:layout_margin="10dp"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/custom_layout_customer_detail"/>
+            <include layout="@layout/custom_layout_customer_create"/>
+            <include layout="@layout/custom_layout_custom_detail_nodata"/>
+        </LinearLayout>
+        <!--end layout right-->
+    </LinearLayout>
+
+</LinearLayout>

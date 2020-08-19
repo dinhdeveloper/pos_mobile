@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/menu_home"
+            android:icon="@drawable/ic_home_navleft_24"
+            android:title="Home" />
+        <item
+            android:id="@+id/menu_history"
+            android:icon="@drawable/ic_history_navleft_24"
+            android:title="Lịch sử" />
+        <item
+            android:id="@+id/menu_product"
+            android:icon="@drawable/ic_product_navleft_24"
+            android:title="Sản phẩm" />
+        <item
+            android:id="@+id/menu_customer"
+            android:icon="@drawable/ic_person_navleft_24"
+            android:title="Khách hàng" />
+        <item
+            android:id="@+id/menu_level_customer"
+            android:icon="@drawable/ic_account_tree_24"
+            android:title="Cấp độ khách hàng" />
+
+        <item
+            android:id="@+id/menu_logout"
+            android:icon="@drawable/ic_exit_to_app_24"
+            android:title="Đăng xuất" />
+
+    </group>
+</menu>
