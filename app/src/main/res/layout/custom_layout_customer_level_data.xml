@@ -5,7 +5,9 @@
     android:visibility="gone"
     android:id="@+id/leveldata"
     android:background="@color/hinhnen"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:visibility="visible">
 
     <LinearLayout
         android:orientation="vertical"

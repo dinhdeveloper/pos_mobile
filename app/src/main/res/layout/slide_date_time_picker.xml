@@ -7,12 +7,12 @@
 
 
 
-    <qtc.project.pos_tablet.dialog.slidedatetimepicker.SlidingTabLayout
+    <qtc.project.pos_mobile.dialog.slidedatetimepicker.SlidingTabLayout
         android:id="@+id/slidingTabLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
-    <qtc.project.pos_tablet.dialog.slidedatetimepicker.CustomViewPager
+    <qtc.project.pos_mobile.dialog.slidedatetimepicker.CustomViewPager
         android:id="@+id/viewPager"
         android:layout_width="match_parent"
         android:layout_height="200dp"

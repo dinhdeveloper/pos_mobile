@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="@dimen/dp10"
     android:background="@color/hinhnen"
     android:orientation="vertical">
 
@@ -15,17 +13,33 @@
         android:elevation="2dp"
         android:orientation="vertical">
 
-        <TextView
+        <LinearLayout
             android:id="@+id/xemchitiet"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_gravity="center"
-            android:layout_marginBottom="@dimen/dp20"
-            android:text="Xem chi tiết"
-            android:textColor="@color/colorAAA"
-            android:textSize="25dp"
-            android:textStyle="bold" />
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/imvClose"
+                android:layout_gravity="right"
+                android:layout_above="@+id/xemchitiet"
+                android:src="@drawable/ic_delete_circle"
+                android:layout_marginRight="@dimen/dp20"
+                android:padding="@dimen/dp10"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dp20"
+                android:text="Xem chi tiết"
+                android:textColor="@color/colorAAA"
+                android:textSize="25dp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/search"
@@ -60,6 +74,8 @@
 
                 <EditText
                     android:id="@+id/edit_filter"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
                     android:layout_width="match_parent"
                     android:layout_height="38dp"
                     android:layout_gravity="center"
@@ -68,8 +84,6 @@
                     android:background="@color/white"
                     android:gravity="start|center"
                     android:hint="Lý Hiển Long, Trần..."
-                    android:imeOptions="actionSearch"
-                    android:inputType="text"
                     android:textColor="@color/colorText" />
 
                 <ImageView
@@ -99,29 +113,6 @@
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_below="@+id/tongkhachhang" />
-
-        <LinearLayout
-            android:id="@+id/btnExit"
-            android:layout_below="@+id/recycler_view_list_customer"
-            android:layout_centerHorizontal="true"
-            android:gravity="center"
-            android:layout_marginBottom="@dimen/dp20"
-            android:layout_width="160dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center"
-            android:background="@drawable/custom_background_button_login">
-
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:text="Quay lại"
-                android:textColor="@color/titleTabColor"
-                android:textSize="12dp"
-                android:textStyle="bold" />
-        </LinearLayout>
-
 
     </RelativeLayout>
 

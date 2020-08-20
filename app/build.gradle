@@ -1,10 +1,10 @@
 apply plugin: 'com.android.application'
-// Add this line
-apply plugin: 'com.google.gms.google-services'
+//// Add this line
+//apply plugin: 'com.google.gms.google-services'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "qtc.project.pos_tablet"
+        applicationId "qtc.project.pos_mobile"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
         minSdkVersion 23

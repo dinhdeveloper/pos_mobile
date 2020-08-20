@@ -106,4 +106,5 @@
     <color name="text">#FF6D4C</color>
     <color name="background_toolbar_home">#709FB0</color>
     <color name="xacnhan">#709FB0</color>
+    <color name="info">#2BB5D1</color>
 </resources>

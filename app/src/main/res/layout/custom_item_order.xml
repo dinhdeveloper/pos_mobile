@@ -125,7 +125,7 @@
 
     <LinearLayout
         android:id="@+id/btnSubmit"
-        android:background="@drawable/custom_border_button_item_level"
+        android:background="@drawable/custom_border_button_success"
         android:layout_width="match_parent"
         android:layout_height="40dp">
         <TextView
