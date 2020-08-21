@@ -47,6 +47,7 @@ import b.laixuantam.myaarlibrary.base.BaseUiContainer;
 import b.laixuantam.myaarlibrary.base.BaseView;
 import b.laixuantam.myaarlibrary.helper.KeyboardUtils;
 import b.laixuantam.myaarlibrary.widgets.currencyedittext.CurrencyEditText;
+import me.dm7.barcodescanner.core.IViewFinder;
 import me.dm7.barcodescanner.zxing.ZXingScannerView;
 import qtc.project.pos_mobile.R;
 import qtc.project.pos_mobile.activity.HomeActivity;
@@ -69,7 +70,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
     String id_customer = null;
     String tongtien = null;
     int tonkho = 0;
-
+    private ZXingScannerView mScannerView;
     private Timer timer = new Timer();
     private final long DELAY = 1000; // in ms
 
@@ -82,7 +83,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
     ArrayList<ProductModel> arrayList = new ArrayList<>();
     boolean enableLoadMore = true;
     ProductAdapter productAdapter;
-
+    int TYLE_CODE_GEN = 2;
     ListItemClickAdapter clickAdapter;
 
     DatabaseProvider provider;
@@ -101,6 +102,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
         getDataSQLite();
         onClick();
     }
+
 
     private void getDataSQLite() {
         ArrayList<ListOrderModel> listOrderModels = provider.getNotes();
@@ -304,6 +306,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
     @Override
     public void initView(CustomerModel model) {
         if (model!=null){
+            id_customer = model.getId();
             ui.nameCustomers.setText(model.getFull_name());
             ui.nameLevelCuss.setText(model.getLevel_name());
             discount = model.getLevel_discount();
@@ -350,13 +353,18 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
         activity.startActivity(intent);
     }
 
+
     @Override
     public void initViewProductClick(ProductModel model) {
         addItemCart(model,model.getListDataProduct().get(0));
     }
 
-    int TYLE_CODE_GEN = 0;
     private void onClick() {
+        //dong layout scanbar code
+        ui.image_close_layout_scan.setOnClickListener(v -> {
+            stopScan();
+            ui.layout_scanbar_code.setVisibility(View.GONE);
+        });
         ui.imageNavLeft.setOnClickListener(v -> {
             if (callback!=null){
                 callback.callNav();
@@ -380,6 +388,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
                 callback.goToChooseCustomer();
         });
 
+
         ui.quetMV.setOnClickListener(v -> {
             TYLE_CODE_GEN = 1;
             if (ContextCompat.checkSelfPermission(activity, Manifest.permission.CAMERA)
@@ -388,16 +397,16 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
                         new String[]{Manifest.permission.CAMERA}, 1101);
             } else {
                 ui.layout_scanbar_code.setVisibility(View.VISIBLE);
-                initScanBarcode();
+                startScan();
             }
         });
     }
-    private ZXingScannerView mScannerView;
+
     private void initScanBarcode() {
         mScannerView = new ZXingScannerView(activity);
-        ui.content_frame.addView(mScannerView);
-        mScannerView.setResultHandler(this);
         mScannerView.setAutoFocus(true);
+        mScannerView.setResultHandler(this);
+        ui.content_frame.addView(mScannerView);
         mScannerView.startCamera();
     }
 
@@ -412,10 +421,41 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
             Vibrator v = (Vibrator) activity.getSystemService(Context.VIBRATOR_SERVICE);
             // SET RUNG 400 MILLISECONDS
             v.vibrate(400);
-            mScannerView.stopCamera();
-            mScannerView = null;
-            ui.layout_scanbar_code.setVisibility(View.GONE);
             generateCode(rawResult.getText());
+            mScannerView.stopCamera();
+            mScannerView.resumeCameraPreview(this);
+
+            startScan();
+            //ui.layout_scanbar_code.setVisibility(View.GONE);
+        }
+    }
+
+    public void startScan() {
+        if (mScannerView != null) {
+            mScannerView.setResultHandler(this);
+            mScannerView.startCamera();
+            rescan();
+        }else {
+            mScannerView = new ZXingScannerView(activity);
+            mScannerView.setAutoFocus(true);
+            mScannerView.setResultHandler(this);
+            ui.content_frame.addView(mScannerView);
+            mScannerView.startCamera();
+        }
+    }
+
+    public void stopScan() {
+        if (mScannerView != null) {
+            mScannerView.stopCameraPreview();
+            mScannerView.stopCamera();
+        }
+    }
+
+    public void rescan() {
+        if (mScannerView != null) {
+            mScannerView.startCamera();
+            mScannerView.startCamera(1);
+            mScannerView.resumeCameraPreview(this);
         }
     }
 
@@ -768,7 +808,7 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
 
 
         @UiElement(R.id.fragmentHome)
-        public LinearLayout fragmentHome;
+        public RelativeLayout fragmentHome;
 
         @UiElement(R.id.edit_filter)
         public EditText edit_filter;
@@ -814,6 +854,10 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
 
         @UiElement(R.id.layout_scanbar_code)
         public RelativeLayout layout_scanbar_code;
+
+        @UiElement(R.id.image_close_layout_scan)
+        public ImageView image_close_layout_scan;
+
 
     }
 }

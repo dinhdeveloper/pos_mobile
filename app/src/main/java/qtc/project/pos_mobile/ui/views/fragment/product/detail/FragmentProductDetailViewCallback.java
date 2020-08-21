@@ -6,4 +6,6 @@ public interface FragmentProductDetailViewCallback {
     void onBackP();
 
     void updateProductDetail(ProductModel productModel);
+
+    void inBarCode(String product_name, String barcode, String status);
 }

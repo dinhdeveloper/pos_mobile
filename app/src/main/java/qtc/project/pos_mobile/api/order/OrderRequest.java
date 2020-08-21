@@ -41,5 +41,6 @@ public class OrderRequest extends ApiRequest<OrderRequest.Service, BaseResponseM
         public String order_id;
         public String order_code;
         public String filter;
+        public String page;
     }
 }

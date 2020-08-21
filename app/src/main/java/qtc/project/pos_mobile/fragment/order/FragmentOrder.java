@@ -36,10 +36,13 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
 
     private void requestData() {
         showProgress();
+        resetPage();
         OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        params.page = String.valueOf(page);
         AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {
             @Override
             public void onSuccess(BaseResponseModel<OrderModel> result) {
+                dismissProgress();
                 if (!TextUtils.isEmpty(result.getSuccess()) && Objects.requireNonNull(result.getSuccess()).equalsIgnoreCase("true")) {
                     if (!TextUtils.isEmpty(result.getTotal_page())) {
                         totalPage = Integer.valueOf(result.getTotal_page());
@@ -85,7 +88,13 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
     @Override
     public void goToDetail(OrderModel model) {
         if (activity!=null)
+            resetPage();
             activity.replaceFragment(new FragmentOrderDetail().newInstance(model),true);
+    }
+
+    private void resetPage() {
+        page =1;
+        totalPage = 0;
     }
 
     @Override
@@ -97,7 +106,7 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
     @Override
     public void filter() {
         if (activity!=null)
-            activity.replaceFragment(new FragmentFilterOrder(),true);
+            activity.addFragment(new FragmentFilterOrder(),true);
     }
 
     @Override
@@ -114,6 +123,7 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
         AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {
             @Override
             public void onSuccess(BaseResponseModel<OrderModel> result) {
+                dismissProgress();
                 if (!TextUtils.isEmpty(result.getSuccess()) && Objects.requireNonNull(result.getSuccess()).equalsIgnoreCase("true")) {
                     if (!TextUtils.isEmpty(result.getTotal_page())) {
                         totalPage = Integer.valueOf(result.getTotal_page());
@@ -152,16 +162,65 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
         ++page;
 
         if (totalPage > 0 && page <= totalPage) {
-            requestData();
+            requestDataTwo();
         } else {
             view.setNoMoreLoading();
         }
+    }
+
+    private void requestDataTwo() {
+        showProgress();
+        OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        resetPage();
+        params.page = String.valueOf(page);
+        AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {
+            @Override
+            public void onSuccess(BaseResponseModel<OrderModel> result) {
+                if (!TextUtils.isEmpty(result.getSuccess()) && Objects.requireNonNull(result.getSuccess()).equalsIgnoreCase("true")) {
+                    if (!TextUtils.isEmpty(result.getTotal_page())) {
+                        totalPage = Integer.valueOf(result.getTotal_page());
+                        if (page == totalPage) {
+                            view.setNoMoreLoading();
+                        }
+                    } else {
+                        view.setNoMoreLoading();
+                    }
+                    view.initRecyclerViewOrder(result.getData());
+                } else {
+                    if (!TextUtils.isEmpty(result.getMessage()))
+                        showAlert(result.getMessage(), KAlertDialog.ERROR_TYPE);
+                    else
+                        showAlert("Không thể tải dữ liệu.", KAlertDialog.ERROR_TYPE);
+                }
+            }
+
+            @Override
+            public void onError(ErrorApiResponse error) {
+                dismissProgress();
+                Log.e("onError", error.message);
+            }
+
+            @Override
+            public void onFail(ApiRequest.RequestError error) {
+                dismissProgress();
+                Log.e("onFail", error.name());
+            }
+        });
     }
 
     @Override
     public void callNav() {
         if (activity!=null)
             activity.toggleNav();
+    }
+
+    public void filterData(OrderModel[] list) {
+        view.clearnData();
+       // view.setLayoutNull();
+        if (list != null) {
+            view.clearnData();
+            view.initRecyclerView(list);
+        }
     }
 
 //    public void filterDataDate(ArrayList<OrderModel> list) {

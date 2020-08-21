@@ -9,6 +9,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -46,6 +47,8 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
         });
 
         ui.imvFilter.setOnClickListener(v -> {
+            orderModels.clear();
+            adapter.notifyDataSetChanged();
             if (callback!=null)
                 callback.filter();
         });
@@ -94,8 +97,11 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
         ui.image_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                orderModels.clear();
+                adapter.notifyDataSetChanged();
                 ui.edit_filter.setText(null);
                 callback.reQuestData();
+                enableLoadMore = true;
             }
         });
     }
@@ -107,7 +113,6 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
 
     @Override
     public void initRecyclerViewOrder(OrderModel[] list) {
-
         if (list == null || list.length == 0) {
             if (orderModels.size() == 0)
                 showEmptyList();
@@ -115,39 +120,19 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
         }
         orderModels.addAll(Arrays.asList(list));
         adapter.notifyDataSetChanged();
-
-//        if (list!=null){
-//            ui.layoutNone.setVisibility(View.GONE);
-//            ui.recycler_view_list.setVisibility(View.VISIBLE);
-//            orderModels.addAll(list);
-//            ui.recycler_view_list.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
-//            adapter = new OrderAdapter(activity, orderModels);
-//            ui.recycler_view_list.setAdapter(adapter);
-//            adapter.notifyDataSetChanged();
-//
-//            adapter.setListener(model -> {
-//                if (callback!=null)
-//                    callback.goToDetail(model);
-//            });
-//        }
     }
 
     private void initRecycler() {
+        ui.recycler_view_list.getRecycledViewPool().clear();
         ui.layoutNone.setVisibility(View.GONE);
         ui.recycler_view_list.setVisibility(View.VISIBLE);
-        ui.recycler_view_list.getRecycledViewPool().clear();
         adapter = new OrderAdapter(activity,orderModels);
         ui.recycler_view_list.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.VERTICAL,false));
         ui.recycler_view_list.setAdapter(adapter);
-
-//            orderModels.addAll(list);
-//            ui.recycler_view_list.setLayoutManager(new LinearLayoutManager(activity,LinearLayoutManager.VERTICAL,false));
-//            adapter = new OrderAdapter(activity, orderModels);
-//            ui.recycler_view_list.setAdapter(adapter);
-//            adapter.notifyDataSetChanged();
         adapter.notifyDataSetChanged();
         adapter.setListener(model -> {
             if (callback != null)
+                enableLoadMore = true;
                 callback.goToDetail(model);
         });
     }
@@ -163,6 +148,23 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
     @Override
     public void clearnData() {
         orderModels.clear();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void setLayoutNull() {
+        orderModels.clear();
+        adapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void initRecyclerView(OrderModel[] list) {
+        if (list == null || list.length == 0) {
+            if (orderModels.size() == 0)
+                showEmptyList();
+            return;
+        }
+        orderModels.addAll(Arrays.asList(list));
         adapter.notifyDataSetChanged();
     }
 
@@ -202,6 +204,9 @@ public class FragmentOrderView extends BaseView<FragmentOrderView.UIContainer> i
 
         @UiElement(R.id.image_close)
         public ImageView image_close;
+
+        @UiElement(R.id.layoutDis)
+        public RelativeLayout layoutDis;
 
 
     }

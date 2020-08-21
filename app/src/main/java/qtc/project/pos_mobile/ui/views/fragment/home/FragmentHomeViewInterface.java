@@ -19,4 +19,5 @@ public interface FragmentHomeViewInterface extends BaseViewInterface {
     void truyenIntent(ArrayList<ListOrderModel> arList);
 
     void initViewProductClick(ProductModel model);
+
 }

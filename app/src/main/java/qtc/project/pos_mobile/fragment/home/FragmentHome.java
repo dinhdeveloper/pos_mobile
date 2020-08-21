@@ -1,7 +1,11 @@
 package qtc.project.pos_mobile.fragment.home;
 
+import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -103,7 +107,6 @@ public class FragmentHome extends BaseFragment<FragmentHomeViewInterface, BasePa
             // int tongtien = Integer.parseInt(orderModel.getPriceProduct()) * Integer.parseInt(orderModel.getQuantityProduct());
             params.total = tongtien;
         }
-
         params.id_product_pack = String.valueOf(id_product_pack);
         params.price_product_pack = String.valueOf(price_product_pack);
         params.quantity_product_pack = String.valueOf(quantity_product_pack);

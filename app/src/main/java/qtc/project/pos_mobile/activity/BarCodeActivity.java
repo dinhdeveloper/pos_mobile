@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,7 +22,9 @@ import com.journeyapps.barcodescanner.BarcodeEncoder;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
+import java.text.DecimalFormat;
 import java.util.Calendar;
+import java.util.List;
 
 import b.laixuantam.myaarlibrary.helper.AccentRemove;
 import qtc.project.pos_mobile.R;
@@ -53,7 +56,7 @@ public class BarCodeActivity extends Activity {
         FullScreencall();
 
         if (getIntent().getExtras() != null) {
-           // getIntent().getExtras().get("model");
+            // getIntent().getExtras().get("model");
             barcode = getIntent().getStringExtra("BARCODE");
             product_name = getIntent().getStringExtra("PRODUCT_NAME");
             status = getIntent().getStringExtra("status");
@@ -120,10 +123,7 @@ public class BarCodeActivity extends Activity {
                 }else if(status.trim().equalsIgnoreCase("1")){
                     genarateScanQrcode(barcode);
                 }
-                printCustom(barcode,2,1);
-                printNewLine();
-                printNewLine();
-
+                printCustom(barcode,0,1);
                 outputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace();
@@ -143,8 +143,9 @@ public class BarCodeActivity extends Activity {
                     byte[] command = Utils.decodeBitmap(bmp);
                     outputStream.write(PrinterCommands.ESC_ALIGN_CENTER);
                     String name = AccentRemove.removeAccent(product_name);
-                    printCustom(name,1,1);
+                    printCustom(name,0,1);
                     printText(command);
+                    printNewLine();
                 } else {
                     Log.e("Print Photo error", "the file isn't exists");
                 }
@@ -164,7 +165,7 @@ public class BarCodeActivity extends Activity {
         MultiFormatWriter multiFormatWriter = new MultiFormatWriter();
         try {
             BitMatrix bitMatrix;
-            bitMatrix = multiFormatWriter.encode(resultCode, BarcodeFormat.CODE_128, 300, 150);
+            bitMatrix = multiFormatWriter.encode(resultCode, BarcodeFormat.CODE_128, 260, 120);
             BarcodeEncoder barcodeEncoder = new BarcodeEncoder();
             Bitmap bmp = barcodeEncoder.createBitmap(bitMatrix);
             try {
@@ -172,7 +173,7 @@ public class BarCodeActivity extends Activity {
                     byte[] command = Utils.decodeBitmap(bmp);
                     outputStream.write(PrinterCommands.ESC_ALIGN_CENTER);
                     String name = AccentRemove.removeAccent(product_name);
-                    printCustom(name,1,1);
+                    printCustom(name,0,1);
                     printText(command);
                 } else {
                     Log.e("Print Photo error", "the file isn't exists");

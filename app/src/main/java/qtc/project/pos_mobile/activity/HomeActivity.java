@@ -400,11 +400,11 @@ public class HomeActivity extends BaseFragmentActivity<HomeActivityViewInterface
 
     }
 
-    public void setDataOrder(ArrayList<OrderModel> list) {
+    public void setDataOrder(OrderModel[] list) {
         BaseFragment baseFragment = getCurrentFragment();
-//        if (baseFragment instanceof FragmentOrder) {
-//            ((FragmentOrder) baseFragment).filterDataDate(list);
-//        }
+        if (baseFragment instanceof FragmentOrder) {
+            ((FragmentOrder) baseFragment).filterData(list);
+        }
     }
 
     public void setDataCustomer(CustomerModel model) {

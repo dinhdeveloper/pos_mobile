@@ -105,10 +105,10 @@ public class BillActivity extends Activity {
 
                 printPhoto(R.drawable.company);
                 printNewLine();
-                printCustom("Store 35", 1, 1);
+                printCustom("QTC TEK", 1, 1);
                 printNewLine();
-                printCustom(AccentRemove.removeAccent("35 Xóm Đất, Phường 8, Quận 11, TP. HCM"), 0, 1);
-                printCustom("Hot Line: +84903382848", 0, 1);
+                printCustom(AccentRemove.removeAccent("Binh Thanh, TP. HCM"), 0, 1);
+                printCustom("Hot Line: +8490909009", 0, 1);
                 printCustom("-~-~-~-~-~-~-~-~-~-~-", 0, 1);
                 printNewLine();
                 printCustom("PHIEU THANH TOAN", 1, 1);
@@ -159,9 +159,11 @@ public class BillActivity extends Activity {
                     long phantram_phaitra = (Long.valueOf(tongtienphaitra) * 100) / thanhtien;
                     long phantram_giamgia = 100 - phantram_phaitra;
 
+                    long tien_giam = ((phantram_giamgia)/100)*thanhtien;
+
                     printCustom("Tong: " + decimalFormat.format(thanhtien), 1, 0);
                     printNewLine();
-                    printCustom("Giam Gia: " + decimalFormat.format(phantram_giamgia) + " %", 1, 0);
+                    printCustom("Giam Gia: " + decimalFormat.format(tien_giam), 1, 0);
                     printNewLine();
                     printCustom("-----------------------", 0, 1);
                     printNewLine();
@@ -173,17 +175,22 @@ public class BillActivity extends Activity {
 
                     printCustom("-----------------------", 0, 1);
                     printNewLine();
-                    printPhoto(R.drawable.image_bill);
-                    printCustom("-----------------------", 0, 1);
-                    printNewLine();
+//                    printPhoto(R.drawable.image_bill);
+//                    printCustom("-----------------------", 0, 1);
+//                    printNewLine();
                     printCustom("Xin Cam On Quy Khach", 0, 1);
                     printCustom("Hen Gap Lai", 0, 1);
+                    printNewLine();
+                    printNewLine();
+                    printNewLine();
                     printNewLine();
                     //printCustom("Tong Thanh Tien: " +String.valueOf(thanhtien),1,0);
                 }
                 printNewLine();
                 printNewLine();
-
+                printNewLine();
+                printNewLine();
+                printNewLine();
                 outputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace();

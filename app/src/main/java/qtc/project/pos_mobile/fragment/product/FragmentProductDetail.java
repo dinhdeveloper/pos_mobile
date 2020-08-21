@@ -1,5 +1,6 @@
 package qtc.project.pos_mobile.fragment.product;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -8,6 +9,7 @@ import b.laixuantam.myaarlibrary.api.ApiRequest;
 import b.laixuantam.myaarlibrary.api.ErrorApiResponse;
 import b.laixuantam.myaarlibrary.base.BaseFragment;
 import b.laixuantam.myaarlibrary.base.BaseParameters;
+import qtc.project.pos_mobile.activity.BarCodeActivity;
 import qtc.project.pos_mobile.activity.HomeActivity;
 import qtc.project.pos_mobile.api.product.ProductAdminRequest;
 import qtc.project.pos_mobile.dependency.AppProvider;
@@ -95,6 +97,17 @@ public class FragmentProductDetail extends BaseFragment<FragmentProductDetailVie
                     Log.e("onFail", error.name());
                 }
             });
+        }
+    }
+
+    @Override
+    public void inBarCode(String product_name, String barcode, String status) {
+        if (activity!=null){
+            Intent intent = new Intent(activity, BarCodeActivity.class);
+            intent.putExtra("BARCODE",barcode);
+            intent.putExtra("status",status);
+            intent.putExtra("PRODUCT_NAME",product_name);
+            activity.startActivity(intent);
         }
     }
 }

@@ -6,4 +6,8 @@ public interface FragmentCustomerFilterViewCallback {
     void setCustomerToHome(CustomerModel model);
 
     void onBackP();
+
+    void getAllData();
+
+    void searchCustomer(String search);
 }

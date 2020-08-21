@@ -39,6 +39,7 @@ public class CustomerRequest extends ApiRequest<CustomerRequest.Service, BaseRes
         public String level_id;
         public String customer_filter;
         public String type_manager;
+        public String page;
 
     }
 }

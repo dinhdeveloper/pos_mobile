@@ -9,6 +9,7 @@ import b.laixuantam.myaarlibrary.api.ApiRequest;
 import b.laixuantam.myaarlibrary.api.ErrorApiResponse;
 import b.laixuantam.myaarlibrary.base.BaseFragment;
 import b.laixuantam.myaarlibrary.base.BaseParameters;
+import b.laixuantam.myaarlibrary.helper.KeyboardUtils;
 import qtc.project.pos_mobile.activity.HomeActivity;
 import qtc.project.pos_mobile.api.order.OrderRequest;
 import qtc.project.pos_mobile.dependency.AppProvider;
@@ -24,6 +25,7 @@ public class FragmentFilterOrder extends BaseFragment<FragmentFilterOrderViewInt
     protected void initialize() {
         activity =(HomeActivity)getActivity();
         view.init(activity,this);
+        KeyboardUtils.setupUI(getView(),activity);
     }
 
     @Override
@@ -54,14 +56,12 @@ public class FragmentFilterOrder extends BaseFragment<FragmentFilterOrderViewInt
             @Override
             public void onSuccess(BaseResponseModel<OrderModel> body) {
                 dismissProgress();
-                ArrayList<OrderModel> list = new ArrayList<>();
-                list.addAll(Arrays.asList(body.getData()));
                 if (activity != null) {
                     activity.checkBack();
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
-                            activity.setDataOrder(list);
+                            activity.setDataOrder(body.getData());
                         }
                     }, 100);
                 }

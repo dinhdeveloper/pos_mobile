@@ -171,6 +171,5 @@ public class FragmentProductView extends BaseView<FragmentProductView.UIContaine
         @UiElement(R.id.image_close)
         public ImageView image_close;
 
-
     }
 }

@@ -15,4 +15,8 @@ public interface FragmentOrderViewInterface extends BaseViewInterface {
     void setNoMoreLoading();
 
     void clearnData();
+
+    void setLayoutNull();
+
+    void initRecyclerView(OrderModel[] list);
 }

@@ -29,6 +29,8 @@ import qtc.project.pos_mobile.model.ProductModel;
 public class FragmentProductDetailView extends BaseView<FragmentProductDetailView.UIContainer> implements FragmentProductDetailViewInterface{
     HomeActivity activity;
     FragmentProductDetailViewCallback callback;
+    String BARCODE,QRCODE ;
+    String PRODUCT_NAME ;
     @Override
     public void init(HomeActivity activity, FragmentProductDetailViewCallback callback) {
         this.activity = activity;
@@ -38,11 +40,33 @@ public class FragmentProductDetailView extends BaseView<FragmentProductDetailVie
             if (callback!=null)
                 callback.onBackP();
         });
+        
+        onClick();
+    }
+
+    private void onClick() {
+        //BARCODE
+        ui.imvInBarcode.setOnClickListener(v -> {
+            if (callback!=null)
+            {
+                callback.inBarCode(PRODUCT_NAME,BARCODE,"0");
+            }
+        });
+
+        ui.imvInQrCode.setOnClickListener(v -> {
+            if (callback!=null)
+            {
+                callback.inBarCode(PRODUCT_NAME,QRCODE,"1");
+            }
+        });
     }
 
     @Override
     public void initView(ProductModel model) {
         if (model!=null){
+            PRODUCT_NAME = model.getName();
+            BARCODE = model.getBarcode();
+            QRCODE = model.getQr_code();
             ui.title_header.setText(model.getName());
             AppProvider.getImageHelper().displayImage(Consts.HOST_API+model.getImage(),ui.imageProduct,null,R.drawable.imageloading);
             ui.nameProduct.setText(model.getName());

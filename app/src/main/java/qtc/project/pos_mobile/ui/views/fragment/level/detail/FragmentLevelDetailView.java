@@ -69,8 +69,7 @@ public class FragmentLevelDetailView extends BaseView<FragmentLevelDetailView.UI
                         if (model.getTotal_customer().equals("0")) {
                             Toast.makeText(activity, "Không có khách hàng nào.", Toast.LENGTH_SHORT).show();
                         } else {
-                            callback.callPopup(model);
-                            showDiaLog();
+                            callback.callPopup(model.getName(),model);
                         }
                     }
                 }
@@ -93,7 +92,6 @@ public class FragmentLevelDetailView extends BaseView<FragmentLevelDetailView.UI
 
             EditText edit_filter = popupView.findViewById(R.id.edit_filter);
             ImageView image_close_search = popupView.findViewById(R.id.image_close);
-            ImageView imvClose = popupView.findViewById(R.id.imvClose);
 
             alert = new AlertDialog.Builder(activity);
             alert.setView(popupView);
@@ -102,10 +100,6 @@ public class FragmentLevelDetailView extends BaseView<FragmentLevelDetailView.UI
 
             image_close_search.setOnClickListener(v -> {
                 edit_filter.setText(null);
-            });
-
-            imvClose.setOnClickListener(v -> {
-                dialog.dismiss();
             });
             //search
             edit_filter.addTextChangedListener(new TextWatcher() {

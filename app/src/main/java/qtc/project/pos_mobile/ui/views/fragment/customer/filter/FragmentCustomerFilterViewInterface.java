@@ -10,5 +10,9 @@ public interface FragmentCustomerFilterViewInterface extends BaseViewInterface {
 
     void init(HomeActivity activity,FragmentCustomerFilterViewCallback callback);
 
-    void initCustomer(ArrayList<CustomerModel> list);
+    void initCustomer(CustomerModel[] list);
+
+    void setNoMoreLoading();
+
+    void clearnData();
 }

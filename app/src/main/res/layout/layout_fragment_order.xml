@@ -7,6 +7,7 @@
     android:layout_height="match_parent"
     android:background="@color/hinhnen"
     android:orientation="vertical">
+    <include layout="@layout/layout_disable_list" />
 
     <include layout="@layout/layout_header_pos" />
 
@@ -34,12 +35,13 @@
                 android:layout_height="24dp"/>
             <EditText
                 android:id="@+id/edit_filter"
+                android:layout_gravity="center"
                 android:imeOptions="actionSearch"
                 android:inputType="text"
                 android:background="@color/white"
                 android:layout_marginHorizontal="5dp"
                 android:layout_weight="1"
-                android:hint="Mã sản phẩm"
+                android:hint="Mã đơn hàng"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"/>
             <ImageView

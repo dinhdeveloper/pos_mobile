@@ -13,44 +13,45 @@ import b.laixuantam.myaarlibrary.base.BaseParameters;
 import qtc.project.pos_mobile.activity.HomeActivity;
 import qtc.project.pos_mobile.api.customer.CustomerRequest;
 import qtc.project.pos_mobile.dependency.AppProvider;
-import qtc.project.pos_mobile.fragment.customer.FragmentCustomerDetail;
-import qtc.project.pos_mobile.fragment.home.FragmentHome;
 import qtc.project.pos_mobile.model.BaseResponseModel;
 import qtc.project.pos_mobile.model.CustomerModel;
-import qtc.project.pos_mobile.model.LevelCustomerModel;
-import qtc.project.pos_mobile.ui.views.fragment.level.detail.FragmentLevelDetailView;
-import qtc.project.pos_mobile.ui.views.fragment.level.detail.FragmentLevelDetailViewCallback;
-import qtc.project.pos_mobile.ui.views.fragment.level.detail.FragmentLevelDetailViewInterface;
+import qtc.project.pos_mobile.ui.views.fragment.level.customerById.FragmentCustomerListView;
+import qtc.project.pos_mobile.ui.views.fragment.level.customerById.FragmentCustomerListViewCallback;
+import qtc.project.pos_mobile.ui.views.fragment.level.customerById.FragmentCustomerListViewInterface;
 
-public class FragmentLevelDetail extends BaseFragment<FragmentLevelDetailViewInterface, BaseParameters> implements FragmentLevelDetailViewCallback {
+public class FragmentCustomerList extends BaseFragment<FragmentCustomerListViewInterface, BaseParameters> implements FragmentCustomerListViewCallback {
+
     HomeActivity activity;
-
-    public static FragmentLevelDetail newInstance(LevelCustomerModel model) {
-        FragmentLevelDetail fm = new FragmentLevelDetail();
+    String name;
+    public  static FragmentCustomerList newInstance(String name,CustomerModel[] list){
+        FragmentCustomerList fm = new FragmentCustomerList();
         Bundle bundle = new Bundle();
-        bundle.putSerializable("model", model);
+        bundle.putSerializable("model",list);
+        bundle.putString("name",name);
         fm.setArguments(bundle);
+
         return fm;
     }
-
     @Override
     protected void initialize() {
-        activity = (HomeActivity) getActivity();
-        view.init(activity, this);
+        activity = (HomeActivity)getActivity();
+        view.init(activity,this);
+        
         getBundle();
     }
 
     private void getBundle() {
-        Bundle extras = getArguments();
-        if (extras != null) {
-            LevelCustomerModel model = (LevelCustomerModel) extras.get("model");
-            view.initLayout(model);
+        Bundle bundle = getArguments();
+        if (bundle!=null){
+            CustomerModel[] list = (CustomerModel[])bundle.get("model");
+            name = (String)bundle.get("name");
+            view.initView(name,list);
         }
     }
 
     @Override
-    protected FragmentLevelDetailViewInterface getViewInstance() {
-        return new FragmentLevelDetailView();
+    protected FragmentCustomerListViewInterface getViewInstance() {
+        return new FragmentCustomerListView();
     }
 
     @Override
@@ -60,26 +61,31 @@ public class FragmentLevelDetail extends BaseFragment<FragmentLevelDetailViewInt
 
     @Override
     public void onBackP() {
-        if (activity != null)
+        if (activity!=null)
             activity.checkBack();
     }
 
     @Override
-    public void callPopup(String name,LevelCustomerModel model) {
-        callDataCustomerById(name,model.getId());
+    public void getAllData() {
+        view.resetData();
+        getBundle();
     }
-    private void callDataCustomerById(String name,String id) {
+
+    @Override
+    public void seachCustomer(String search,String level_id) {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
-        if (id != null) {
-            params.level_id = id;
+        if (search!=null){
+            params.customer_filter = search;
         }
+        params.level_id = level_id;
         AppProvider.getApiManagement().call(CustomerRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<CustomerModel>>() {
             @Override
             public void onSuccess(BaseResponseModel<CustomerModel> body) {
                 if (body != null) {
                     dismissProgress();
-                    showPopup(name,body.getData());
+                    view.clearnData();
+                    view.initView(name,body.getData());
                 }
             }
 
@@ -95,17 +101,5 @@ public class FragmentLevelDetail extends BaseFragment<FragmentLevelDetailViewInt
                 Log.e("onFail", error.name());
             }
         });
-    }
-
-    private void showPopup(String name,CustomerModel[] list) {
-        if (activity!=null){
-            activity.replaceFragment(new FragmentCustomerList().newInstance(name,list),true);
-        }
-    }
-
-    @Override
-    public void goHome() {
-        if (activity != null)
-            activity.replaceFragment(new FragmentHome(), false);
     }
 }
