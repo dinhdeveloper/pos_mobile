@@ -1,6 +1,7 @@
 package qtc.project.pos_mobile.adapter.product;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -44,7 +45,7 @@ public class ProductProductAdapter extends SuperAdapter<ProductModel> {
         LinearLayout layoutConHang = holder.findViewById(R.id.layoutConHang);
         TextView priceProduct = holder.findViewById(R.id.priceProduct);
         TextView warehouseProduct = holder.findViewById(R.id.warehouseProduct);
-        RelativeLayout item_product = holder.findViewById(R.id.item_product);
+        CardView item_product = holder.findViewById(R.id.item_product);
 
         if (!item.getListDataProduct().isEmpty() && Integer.valueOf(item.getTotal_stock())>0){
             layoutConHang.setVisibility(View.VISIBLE);

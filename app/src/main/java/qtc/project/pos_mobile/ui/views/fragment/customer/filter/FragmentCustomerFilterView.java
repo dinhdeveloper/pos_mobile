@@ -1,8 +1,10 @@
 package qtc.project.pos_mobile.ui.views.fragment.customer.filter;
 
+import android.support.design.widget.BottomNavigationView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
+import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -68,6 +70,7 @@ public class FragmentCustomerFilterView extends BaseView<FragmentCustomerFilterV
 
     private void searchCustomer(String search) {
         if (search!=null){
+            ui.bottomnav.setVisibility(View.GONE);
             callback.searchCustomer(search);
         }
     }
@@ -81,6 +84,7 @@ public class FragmentCustomerFilterView extends BaseView<FragmentCustomerFilterV
         }
         arrayList.addAll(Arrays.asList(list));
         infoAdapter.notifyDataSetChanged();
+        ui.tvTotal.setText("Có tất cả "+arrayList.size()+" khách hàng");
     }
 
     private void showEmptyList() {
@@ -95,6 +99,7 @@ public class FragmentCustomerFilterView extends BaseView<FragmentCustomerFilterV
             infoAdapter.notifyDataSetChanged();
 
             infoAdapter.setListener(model -> {
+                ui.bottomnav.setVisibility(View.VISIBLE);
                 ui.btnOk.setOnClickListener(v -> {
                     if (callback!=null)
                         callback.setCustomerToHome(model);
@@ -157,6 +162,11 @@ public class FragmentCustomerFilterView extends BaseView<FragmentCustomerFilterV
 
         @UiElement(R.id.btnOk)
         public LinearLayout btnOk;
+
+        @UiElement(R.id.bottomnav)
+        public BottomNavigationView bottomnav;
+
+
 
     }
 }

@@ -227,7 +227,7 @@
                     <TextView
                         android:text="Hủy đơn này"
                         android:textStyle="bold"
-                        android:textSize="12dp"
+                        android:textSize="14dp"
                         android:textColor="@color/titleTabColor"
                         android:layout_gravity="center"
                         android:gravity="center"

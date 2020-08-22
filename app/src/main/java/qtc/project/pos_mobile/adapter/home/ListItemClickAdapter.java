@@ -86,35 +86,35 @@ public class ListItemClickAdapter extends SuperAdapter<ListOrderModel> {
                 return true;
             }
         });
-        quantity.setOnKeyListener(new View.OnKeyListener() {
-            @Override
-            public boolean onKey(View v, int keyCode, KeyEvent event) {
-                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
-                    if (!quantity.getText().toString().trim().isEmpty()){
-                        if (Long.valueOf(quantity.getText().toString()) > Long.valueOf(item.getInventory())) {
-                            Toast.makeText(getContext(), "Tồn kho không đủ.", Toast.LENGTH_SHORT).show();
-                            quantity.setText(item.getQuantityProduct());
-                        } else if (quantity.getText().toString().equalsIgnoreCase("0") || quantity.getText().toString().trim().isEmpty()) {
-                            quantity.setText(String.valueOf(1));
-                            item.setQuantityProduct(String.valueOf(1));
-                            priceProduct.setText(decimalFormat.format(1 * Long.valueOf(item.getPriceProduct())));
-                            listener.onChangeSoLuong(item);
-                        } else {
-                            item.setQuantityProduct(quantity.getText().toString());
-                            priceProduct.setText(decimalFormat.format(Long.valueOf(item.getQuantityProduct()) * Long.valueOf(item.getPriceProduct())));
-                            listener.onChangeSoLuong(item);
-                        }
-                    }else {
-                        quantity.setText(String.valueOf(1));
-                        item.setQuantityProduct(String.valueOf(1));
-                        priceProduct.setText(decimalFormat.format(1 * Long.valueOf(item.getPriceProduct())));
-                        listener.onChangeSoLuong(item);
-                    }
-                    return true;
-                }
-                return false;
-            }
-        });
+//        quantity.setOnKeyListener(new View.OnKeyListener() {
+//            @Override
+//            public boolean onKey(View v, int keyCode, KeyEvent event) {
+//                if ((event.getAction() == KeyEvent.ACTION_DOWN) && (keyCode == KeyEvent.KEYCODE_ENTER)) {
+//                    if (!quantity.getText().toString().trim().isEmpty()){
+//                        if (Long.valueOf(quantity.getText().toString()) > Long.valueOf(item.getInventory())) {
+//                            Toast.makeText(getContext(), "Tồn kho không đủ.", Toast.LENGTH_SHORT).show();
+//                            quantity.setText(item.getQuantityProduct());
+//                        } else if (quantity.getText().toString().equalsIgnoreCase("0") || quantity.getText().toString().trim().isEmpty()) {
+//                            quantity.setText(String.valueOf(1));
+//                            item.setQuantityProduct(String.valueOf(1));
+//                            priceProduct.setText(decimalFormat.format(1 * Long.valueOf(item.getPriceProduct())));
+//                            listener.onChangeSoLuong(item);
+//                        } else {
+//                            item.setQuantityProduct(quantity.getText().toString());
+//                            priceProduct.setText(decimalFormat.format(Long.valueOf(item.getQuantityProduct()) * Long.valueOf(item.getPriceProduct())));
+//                            listener.onChangeSoLuong(item);
+//                        }
+//                    }else {
+//                        quantity.setText(String.valueOf(1));
+//                        item.setQuantityProduct(String.valueOf(1));
+//                        priceProduct.setText(decimalFormat.format(1 * Long.valueOf(item.getPriceProduct())));
+//                        listener.onChangeSoLuong(item);
+//                    }
+//                    return true;
+//                }
+//                return false;
+//            }
+//        });
 
         imageView_close.setOnClickListener(new View.OnClickListener() {
             @Override

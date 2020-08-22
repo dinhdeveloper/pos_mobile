@@ -159,7 +159,7 @@ public class BillActivity extends Activity {
                     long phantram_phaitra = (Long.valueOf(tongtienphaitra) * 100) / thanhtien;
                     long phantram_giamgia = 100 - phantram_phaitra;
 
-                    long tien_giam = ((phantram_giamgia)/100)*thanhtien;
+                    long tien_giam = ((phantram_giamgia*thanhtien)/100);
 
                     printCustom("Tong: " + decimalFormat.format(thanhtien), 1, 0);
                     printNewLine();
@@ -175,22 +175,13 @@ public class BillActivity extends Activity {
 
                     printCustom("-----------------------", 0, 1);
                     printNewLine();
-//                    printPhoto(R.drawable.image_bill);
-//                    printCustom("-----------------------", 0, 1);
-//                    printNewLine();
+
                     printCustom("Xin Cam On Quy Khach", 0, 1);
                     printCustom("Hen Gap Lai", 0, 1);
-                    printNewLine();
-                    printNewLine();
-                    printNewLine();
-                    printNewLine();
-                    //printCustom("Tong Thanh Tien: " +String.valueOf(thanhtien),1,0);
+                    printCustom("",0,1);
+                    printCustom("",0,1);
+                    printCustom("",0,1);
                 }
-                printNewLine();
-                printNewLine();
-                printNewLine();
-                printNewLine();
-                printNewLine();
                 outputStream.flush();
             } catch (IOException e) {
                 e.printStackTrace();

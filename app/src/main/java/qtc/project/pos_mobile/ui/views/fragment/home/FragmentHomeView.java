@@ -764,7 +764,8 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
             }
             ui.idPriceTemp.setText(decimalFormat.format(total) + " đ");
             if (discount != null) {
-                ui.priceSale.setText(decimalFormat.format(Integer.parseInt(discount)) + " %");
+                long tien_giam = (Long.valueOf(total)*Long.valueOf(discount))/100;
+                ui.priceSale.setText(decimalFormat.format(Long.valueOf(tien_giam)) + " đ");
 
                 long tiengiam = (total * Integer.parseInt(discount)) / 100;
                 tongtien = String.valueOf(total - tiengiam);
