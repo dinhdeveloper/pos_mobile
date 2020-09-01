@@ -31,7 +31,7 @@ public class FragmentProductHomeView extends BaseView<FragmentProductHomeView.UI
         this.activity = activity;
         this.callback = callback;
         initRecycler();
-        ui.title_header.setText("Sản phẩm");
+        ui.title_header.setText("Danh sách sản phẩm");
         ui.imvHome.setOnClickListener(v -> {
             if (callback!=null)
                 callback.onBackP();
@@ -84,7 +84,7 @@ public class FragmentProductHomeView extends BaseView<FragmentProductHomeView.UI
             return;
         }
         for (ProductModel model : list) {
-            if (Integer.valueOf(model.getTotal_stock()) >= 0) {
+            if (Integer.valueOf(model.getTotal_stock()) > 0) {
                 arrayList.add(model);
             }
         }

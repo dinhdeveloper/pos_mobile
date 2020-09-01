@@ -39,9 +39,10 @@ public class ProductProductAdapter extends SuperAdapter<ProductModel> {
     @Override
     public void onBind(SuperViewHolder holder, int viewType, int layoutPosition, ProductModel item) {
         ImageView imageProduct = holder.findViewById(R.id.imageProduct);
+        ImageView imvTamHetHang = holder.findViewById(R.id.imvTamHetHang);
         ImageView checkedProduct = holder.findViewById(R.id.checkedProduct);
         TextView nameProduct = holder.findViewById(R.id.nameProduct);
-        LinearLayout layoutHetHang = holder.findViewById(R.id.layoutHetHang);
+        //LinearLayout layoutHetHang = holder.findViewById(R.id.layoutHetHang);
         LinearLayout layoutConHang = holder.findViewById(R.id.layoutConHang);
         TextView priceProduct = holder.findViewById(R.id.priceProduct);
         TextView warehouseProduct = holder.findViewById(R.id.warehouseProduct);
@@ -49,7 +50,7 @@ public class ProductProductAdapter extends SuperAdapter<ProductModel> {
 
         if (!item.getListDataProduct().isEmpty() && Integer.valueOf(item.getTotal_stock())>0){
             layoutConHang.setVisibility(View.VISIBLE);
-            layoutHetHang.setVisibility(View.GONE);
+            imvTamHetHang.setVisibility(View.GONE);
             AppProvider.getImageHelper().displayImage(Consts.HOST_API + item.getImage(), imageProduct, null, R.drawable.imageloading);
             nameProduct.setText(item.getName().toString());
             String pattern = "###,###.###";
@@ -80,15 +81,17 @@ public class ProductProductAdapter extends SuperAdapter<ProductModel> {
         else {
             AppProvider.getImageHelper().displayImage(Consts.HOST_API + item.getImage(), imageProduct, null, R.drawable.imageloading);
             nameProduct.setText(item.getName().toString());
+            priceProduct.setText("Hết hàng");
+            warehouseProduct.setText("Hết hàng");
             String pattern = "###,###.###";
             DecimalFormat decimalFormat = new DecimalFormat(pattern);
-            if (!item.getSale_price().isEmpty()){
-                priceProduct.setText(decimalFormat.format(Integer.parseInt(item.getSale_price())) + " đ");
-            }
-            warehouseProduct.setText(decimalFormat.format(Integer.valueOf(item.getTotal_stock())));
-
-            layoutConHang.setVisibility(View.GONE);
-            layoutHetHang.setVisibility(View.VISIBLE);
+//            if (!item.getSale_price().isEmpty()){
+//                priceProduct.setText(decimalFormat.format(Integer.parseInt(item.getSale_price())) + " đ");
+//            }
+//            warehouseProduct.setText(decimalFormat.format(Integer.valueOf(item.getTotal_stock())));
+//
+            //layoutConHang.setVisibility(View.GONE);
+            imvTamHetHang.setVisibility(View.VISIBLE);
 
             item_product.setOnClickListener(new View.OnClickListener() {
                 @Override

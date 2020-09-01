@@ -1,6 +1,7 @@
 package qtc.project.pos_mobile.adapter.level;
 
 import android.content.Context;
+import android.support.v7.widget.CardView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -37,10 +38,15 @@ public class LevelCustomerAdapter extends SuperAdapter<LevelCustomerModel> {
         TextView description = holder.findViewById(R.id.description);
         TextView nameLevel = holder.findViewById(R.id.nameLevel);
         TextView discount = holder.findViewById(R.id.discount);
-        LinearLayout layoutLevelCus = holder.findViewById(R.id.layoutLevelCus);
+        CardView layoutLevelCus = holder.findViewById(R.id.layoutLevelCus);
 
         AppProvider.getImageHelper().displayImage(Consts.HOST_API+item.getImage(), imageLevel, null, R.drawable.imageloading);
-        description.setText(item.getDescription());
+        if (item.getDescription()==null ||item.getDescription().isEmpty()){
+            description.setText(item.getName());
+        }
+        else {
+            description.setText(item.getDescription());
+        }
         nameLevel.setText(item.getName());
         discount.setText("Có "+item.getTotal_customer()+" người hiển thị.");
 

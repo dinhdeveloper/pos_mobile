@@ -57,12 +57,10 @@
 
             <ImageView
                 android:id="@+id/quetMV"
-                android:layout_marginLeft="5dp"
-                android:layout_marginRight="30dp"
                 android:layout_gravity="center"
-                android:src="@drawable/barcode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:src="@drawable/ic_barcode_home"
+                android:layout_width="100dp"
+                android:layout_height="45dp"/>
         </LinearLayout>
 
         <LinearLayout

@@ -40,7 +40,7 @@ public class FragmentOrderDetailView extends BaseView<FragmentOrderDetailView.UI
     public void initView(OrderModel model) {
         if (model != null) {
             ui.idCustomer.setText(model.getCustomer_id_code());
-            ui.idEmployee.setText(model.getEmployee_fullname());
+            ui.idEmployee.setText(model.getEmployee_code());
             ui.idOrder.setText(model.getOrder_id_code());
 
             ArrayList<OrderDetailModel> detailModels = new ArrayList<>();
@@ -59,7 +59,7 @@ public class FragmentOrderDetailView extends BaseView<FragmentOrderDetailView.UI
                 long total = Long.valueOf(detailModels.get(i).getPrice()) * Long.valueOf(detailModels.get(i).getQuantity());
                 allPrice += total;
             }
-            String pattern = "###,###.###";
+            String pattern = "###,###,###";
             DecimalFormat decimalFormat = new DecimalFormat(pattern);
 
             ui.idPriceDemo.setText(decimalFormat.format(allPrice) + " đ");

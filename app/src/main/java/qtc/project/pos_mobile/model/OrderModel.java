@@ -19,6 +19,7 @@ public class OrderModel extends BaseResponseModel {
     private String employee_birthday;
     private String employee_image;
     private String employee_level;
+    private String employee_code;
     private String customer_id;
     private String customer_id_code;
     private String customer_fullname;
@@ -55,6 +56,14 @@ public class OrderModel extends BaseResponseModel {
 
     public void setOrder_created_date(String order_created_date) {
         this.order_created_date = order_created_date;
+    }
+
+    public String getEmployee_code() {
+        return employee_code;
+    }
+
+    public void setEmployee_code(String employee_code) {
+        this.employee_code = employee_code;
     }
 
     public String getOrder_status() {

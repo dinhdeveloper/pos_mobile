@@ -36,10 +36,22 @@ public class CustomerAdapter extends SuperAdapter<CustomerModel> {
         LinearLayout layout_customer = holder.findViewById(R.id.layout_customer);
 
 
-        nameCustomer.setText(item.getFull_name());
-        phoneCustomer.setText(item.getPhone_number());
-        addressCustomer.setText(item.getAddress());
-
+        if (item.getFull_name()==null|| item.getFull_name().isEmpty()){
+            nameCustomer.setText("Khách vãng lai");
+        }
+        else {
+            nameCustomer.setText(item.getFull_name());
+        }
+        if (item.getPhone_number()==null|| item.getPhone_number().isEmpty()){
+            phoneCustomer.setText("Không có số điện thoại");
+        }else {
+            phoneCustomer.setText(item.getPhone_number());
+        }
+        if (item.getAddress()==null|| item.getAddress().isEmpty()){
+            addressCustomer.setText("Không có địa chỉ");
+        }else {
+            addressCustomer.setText(item.getAddress());
+        }
         layout_customer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="280dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:elevation="@dimen/dp5"
     android:gravity="center"
     app:cardCornerRadius="7dp"
@@ -27,6 +28,15 @@
                 android:layout_centerHorizontal="true"
                 android:layout_width="match_parent"
                 android:layout_height="170dp"/>
+
+            <ImageView
+                android:id="@+id/imvTamHetHang"
+                android:layout_centerHorizontal="true"
+                android:visibility="gone"
+                android:src="@drawable/tam_het_hang"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                tools:visibility="visible"/>
             <ImageView
                 android:id="@+id/checkedProduct"
                 android:visibility="gone"
@@ -58,102 +68,106 @@
                 android:layout_height="match_parent"/>
 
             <LinearLayout
-                android:id="@+id/layoutHetHang"
-                android:visibility="gone"
-                android:gravity="center"
-                android:layout_gravity="center"
-                android:orientation="vertical"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-                <TextView
-                    android:textSize="@dimen/dp20"
-                    android:text="Hết hàng"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@color/text"
-                    android:textStyle="bold"
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"/>
-            </LinearLayout>
-
-            <LinearLayout
-                android:id="@+id/layoutConHang"
                 android:orientation="vertical"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
+
+<!--                <LinearLayout-->
+<!--                    android:id="@+id/layoutHetHang"-->
+<!--                    android:visibility="gone"-->
+<!--                    android:gravity="center"-->
+<!--                    android:layout_gravity="center"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="match_parent"-->
+<!--                    tools:visibility="visible">-->
+<!--                    <TextView-->
+<!--                        android:textSize="@dimen/dp20"-->
+<!--                        android:text="Hết hàng"-->
+<!--                        android:layout_gravity="center"-->
+<!--                        android:gravity="center"-->
+<!--                        android:textColor="@color/text"-->
+<!--                        android:textStyle="bold"-->
+<!--                        android:layout_width="wrap_content"-->
+<!--                        android:layout_height="match_parent"/>-->
+<!--                </LinearLayout>-->
                 <LinearLayout
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginVertical="@dimen/dp5"
+                    android:id="@+id/layoutConHang"
+                    android:orientation="vertical"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="match_parent">
+                    <LinearLayout
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginVertical="@dimen/dp5"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
 
-                    <ImageView
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_price"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"/>
+                        <TextView
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:textSize="16dp"
+                            android:maxLines="1"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Giá :"
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/priceProduct"
+                            android:textSize="16dp"
+                            android:maxLines="1"
+                            android:layout_marginHorizontal="@dimen/dp10"
+                            android:textStyle="bold"
+                            android:textColor="@color/text"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
                         android:layout_gravity="center"
-                        android:src="@drawable/ic_price"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"/>
-                    <TextView
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:textSize="16dp"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="Giá :"
-                        android:layout_weight="3"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:layout_marginVertical="@dimen/dp5"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/priceProduct"
-                        android:textSize="16dp"
-                        android:maxLines="1"
-                        android:layout_marginHorizontal="@dimen/dp10"
-                        android:textStyle="bold"
-                        android:textColor="@color/text"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content">
 
-                </LinearLayout>
+                        <ImageView
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_ware_house"
+                            android:layout_width="@dimen/dp20"
+                            android:layout_height="@dimen/dp20"/>
+                        <TextView
+                            android:layout_marginLeft="@dimen/dp10"
+                            android:textSize="16dp"
+                            android:maxLines="1"
+                            android:textStyle="bold"
+                            android:textColor="@color/black"
+                            android:text="Kho :"
+                            android:layout_weight="3"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
+                        <TextView
+                            android:id="@+id/warehouseProduct"
+                            android:layout_marginRight="@dimen/dp10"
+                            android:textSize="16dp"
+                            android:maxLines="1"
+                            android:textStyle="bold"
+                            android:textColor="@color/colorYellow"
+                            android:layout_weight="1"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"/>
 
-                <LinearLayout
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:orientation="horizontal"
-                    android:layout_marginVertical="@dimen/dp5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_ware_house"
-                        android:layout_width="@dimen/dp20"
-                        android:layout_height="@dimen/dp20"/>
-                    <TextView
-                        android:layout_marginLeft="@dimen/dp10"
-                        android:textSize="16dp"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        android:textColor="@color/black"
-                        android:text="Kho :"
-                        android:layout_weight="3"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-                    <TextView
-                        android:id="@+id/warehouseProduct"
-                        android:layout_marginRight="@dimen/dp10"
-                        android:textSize="16dp"
-                        android:maxLines="1"
-                        android:textStyle="bold"
-                        android:textColor="@color/colorYellow"
-                        android:layout_weight="1"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"/>
-
+                    </LinearLayout>
                 </LinearLayout>
             </LinearLayout>
-
-
         </LinearLayout>
     </LinearLayout>
 

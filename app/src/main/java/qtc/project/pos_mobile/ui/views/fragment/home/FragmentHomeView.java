@@ -93,6 +93,10 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
         this.callback = callback;
         KeyboardUtils.setupUI(getView(),activity);
         ui.title_header.setText("Home");
+        ui.tvTitleEmpty.setVisibility(View.VISIBLE);
+        ui.tvContentTitleEmpty.setVisibility(View.VISIBLE);
+        ui.tvTitleEmpty.setText("Giỏ hàng trống");
+        ui.tvContentTitleEmpty.setText("Chưa có sản phẩm trong giỏ hàng");
         ui.imvHome.setVisibility(View.INVISIBLE);
         ui.edit_filter.requestFocus();
         ui.layoutNone.setBackgroundColor(Color.parseColor("#FFFFFF"));
@@ -806,7 +810,11 @@ public class FragmentHomeView extends BaseView<FragmentHomeView.UIContainer> imp
         @UiElement(R.id.layoutShow)
         public LinearLayout layoutShow;
 
+        @UiElement(R.id.tvTitleEmpty)
+        public TextView tvTitleEmpty;
 
+        @UiElement(R.id.tvContentTitleEmpty)
+        public TextView tvContentTitleEmpty;
 
         @UiElement(R.id.fragmentHome)
         public RelativeLayout fragmentHome;
