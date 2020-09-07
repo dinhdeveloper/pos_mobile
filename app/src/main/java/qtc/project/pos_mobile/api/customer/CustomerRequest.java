@@ -36,6 +36,7 @@ public class CustomerRequest extends ApiRequest<CustomerRequest.Service, BaseRes
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String level_id;
         public String customer_filter;
         public String type_manager;

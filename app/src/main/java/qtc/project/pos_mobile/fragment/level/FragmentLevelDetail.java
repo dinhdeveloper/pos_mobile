@@ -71,6 +71,7 @@ public class FragmentLevelDetail extends BaseFragment<FragmentLevelDetailViewInt
     private void callDataCustomerById(String name,String id) {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (id != null) {
             params.level_id = id;
         }

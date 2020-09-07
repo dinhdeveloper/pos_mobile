@@ -75,6 +75,7 @@ public class FragmentCustomerList extends BaseFragment<FragmentCustomerListViewI
     public void seachCustomer(String search,String level_id) {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (search!=null){
             params.customer_filter = search;
         }

@@ -59,6 +59,7 @@ public class FragmentHome extends BaseFragment<FragmentHomeViewInterface, BasePa
     @Override
     public void callDataSearchProduct(String search) {
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (search != null) {
             params.product = search;
         }

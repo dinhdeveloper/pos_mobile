@@ -100,19 +100,20 @@ public class LoginActivity extends BaseFragmentActivity<LoginViewInterface, Base
     }
 
     @Override
-    public void onClickLogin(String username, String password) {
-        requestLogin(username, password);
+    public void onClickLogin(String id_store,String username, String password) {
+        requestLogin(id_store,username, password);
     }
 
-    private void requestLogin(String username, String password) {
+    private void requestLogin(String id_store,String username, String password) {
         if (!AppProvider.getConnectivityHelper().hasInternetConnection()) {
             showAlert(getString(R.string.error_connect_internet), KAlertDialog.ERROR_TYPE);
             return;
         }
         showProgress(getString(R.string.loading));
         LoginRequest.ApiParams params = new LoginRequest.ApiParams();
-        params.id_code = username;
         params.detect = "employee_login";
+        params.store_code = id_store;
+        params.id_code = username;
         params.password = password;
         AppProvider.getApiManagement().call(LoginRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<EmployeeModel>>() {
             @Override
@@ -173,8 +174,17 @@ public class LoginActivity extends BaseFragmentActivity<LoginViewInterface, Base
     }
 
     private void goToHome() {
-        startActivity(new Intent(LoginActivity.this, HomeActivity.class));
-        finish();
+        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("2")){
+            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+            finish();
+        }
+        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("2")){
+            startActivity(new Intent(LoginActivity.this, HomeAdminActivity.class));
+            finish();
+        }
+        else {
+            showAlert("Bạn không đủ quyền vào ứng dụng",KAlertDialog.ERROR_TYPE);
+        }
     }
 
 

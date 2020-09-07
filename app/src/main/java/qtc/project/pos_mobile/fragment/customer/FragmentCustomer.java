@@ -32,6 +32,7 @@ public class FragmentCustomer extends BaseFragment<FragmentCustomerViewInterface
     private void requestDataCustomer() {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         AppProvider.getApiManagement().call(CustomerRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<CustomerModel>>() {
             @Override
             public void onSuccess(BaseResponseModel<CustomerModel> body) {
@@ -94,6 +95,7 @@ public class FragmentCustomer extends BaseFragment<FragmentCustomerViewInterface
     public void callDataSearchCus(String toString) {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (toString!=null){
             params.customer_filter = toString;
         }

@@ -36,6 +36,7 @@ public class EmployeeRequest extends ApiRequest<EmployeeRequest.Service, BaseRes
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String type_manager;
         public String id_code;
         public String full_name;

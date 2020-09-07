@@ -47,6 +47,7 @@ public class FragmentProductHome extends BaseFragment<FragmentProductHomeViewInt
         String search = (String)bundle.get("search");
         if (search!=null){
             ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+            params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
             params.product = search;
             params.page = String.valueOf(page);
             showProgress();

@@ -3,6 +3,7 @@ package qtc.project.pos_mobile.model;
 public class PackageInfoModel {
 
     private String pack_id;
+    private String id_business;
     private String manufacturer_id;
     private String manufacturer_name;
     private String manufacturer_email;
@@ -27,6 +28,13 @@ public class PackageInfoModel {
         this.quantityCar = quantityCar;
     }
 
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
+    }
 
     public String getPack_id() {
         return pack_id;

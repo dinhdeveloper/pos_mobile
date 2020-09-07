@@ -65,6 +65,7 @@ public class FragmentCustomerDetail extends BaseFragment<FragmentCustomerDetailV
             showProgress();
             CustomerAdminRequest.ApiParams params = new CustomerAdminRequest.ApiParams();
 
+            params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
             params.type_manager = "update_customer";
 
             params.id_customer = id;

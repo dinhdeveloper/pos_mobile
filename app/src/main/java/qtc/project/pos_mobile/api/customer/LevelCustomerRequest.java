@@ -36,5 +36,6 @@ public class LevelCustomerRequest  extends ApiRequest<LevelCustomerRequest.Servi
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
     }
 }

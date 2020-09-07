@@ -37,6 +37,7 @@ public class ProductRequest extends ApiRequest<ProductRequest.Service, BaseRespo
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String id_category;
         public String product;
         public String bar_code;

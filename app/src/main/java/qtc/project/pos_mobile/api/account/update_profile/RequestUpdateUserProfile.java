@@ -119,6 +119,8 @@ public class RequestUpdateUserProfile extends ApiRequest<RequestUpdateUserProfil
 
         public String detect;
 
+        public String id_business;
+
         public String id;
 
         @Nullable

@@ -68,6 +68,7 @@ public class FragmentOrderDetail extends BaseFragment<FragmentOrderDetailViewInt
     public void cancelOrder(String id_order) {
         showProgress();
         CancelOrderRequest.ApiParams params = new CancelOrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (id_order != null) {
             params.id_order = id_order;
         }

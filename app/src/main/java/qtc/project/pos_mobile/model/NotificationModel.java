@@ -5,6 +5,7 @@ import android.support.annotation.Nullable;
 public class NotificationModel extends BaseResponseModel {
 
     private String id;
+    private String id_business;
     @Nullable
     private String type_sender;
 
@@ -46,6 +47,14 @@ public class NotificationModel extends BaseResponseModel {
 
     public String getId() {
         return id;
+    }
+
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
     }
 
     @Nullable

@@ -38,6 +38,7 @@ public class FragmentCustomerFilter extends BaseFragment<FragmentCustomerFilterV
     private void callDataCustomer() {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.page = String.valueOf(page);
         AppProvider.getApiManagement().call(CustomerRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<CustomerModel>>() {
             @Override
@@ -109,6 +110,7 @@ public class FragmentCustomerFilter extends BaseFragment<FragmentCustomerFilterV
         showProgress();
         resetPage();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.page = String.valueOf(page);
         AppProvider.getApiManagement().call(CustomerRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<CustomerModel>>() {
             @Override
@@ -151,6 +153,7 @@ public class FragmentCustomerFilter extends BaseFragment<FragmentCustomerFilterV
     public void searchCustomer(String search) {
         showProgress();
         CustomerRequest.ApiParams params = new CustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (search != null) {
             params.customer_filter = search;
         }

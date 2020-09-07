@@ -36,6 +36,7 @@ public class CountCustomerRequest extends ApiRequest<CountCustomerRequest.Servic
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String level_id;
     }
 }

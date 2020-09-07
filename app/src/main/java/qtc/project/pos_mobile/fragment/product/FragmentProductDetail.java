@@ -68,6 +68,7 @@ public class FragmentProductDetail extends BaseFragment<FragmentProductDetailVie
         if (productModel !=null){
             showProgress();
             ProductAdminRequest.ApiParams params = new ProductAdminRequest.ApiParams();
+            params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
             params.type_manager = "update_product";
             params.id_product = productModel.getId();
             params.name = productModel.getName();

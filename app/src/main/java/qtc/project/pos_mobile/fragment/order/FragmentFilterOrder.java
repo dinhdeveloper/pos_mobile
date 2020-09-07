@@ -48,6 +48,7 @@ public class FragmentFilterOrder extends BaseFragment<FragmentFilterOrderViewInt
     public void filterData(String dates, String id_order) {
         showProgress();
         OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         if (dates != null || id_order != null) {
             params.time_filter = dates;
             params.order_code = id_order;

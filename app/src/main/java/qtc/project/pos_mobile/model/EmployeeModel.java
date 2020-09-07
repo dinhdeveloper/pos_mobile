@@ -3,6 +3,7 @@ package qtc.project.pos_mobile.model;
 public class EmployeeModel extends BaseResponseModel {
 
     private String id;
+    private String id_business;
     private String id_code;
     private String full_name;
     private String email;
@@ -21,6 +22,14 @@ public class EmployeeModel extends BaseResponseModel {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
     }
 
     public String getId_code() {

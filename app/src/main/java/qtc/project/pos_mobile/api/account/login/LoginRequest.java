@@ -44,6 +44,7 @@ public class LoginRequest extends ApiRequest<LoginRequest.Service, BaseResponseM
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String store_code;
         public String id_code;
         public String password;
 

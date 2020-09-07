@@ -41,6 +41,7 @@ public class FragmentProduct extends BaseFragment<FragmentProductViewInterface, 
 
     private void getData() {
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
 //        if (cateId != null) {
 //            params.id_category = cateId;
 //        }
@@ -120,6 +121,7 @@ public class FragmentProduct extends BaseFragment<FragmentProductViewInterface, 
     public void searchProduct(String search) {
         showProgress();
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.product = search;
         AppProvider.getApiManagement().call(ProductRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<ProductModel>>() {
             @Override
@@ -147,6 +149,7 @@ public class FragmentProduct extends BaseFragment<FragmentProductViewInterface, 
     @Override
     public void callAllData() {
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         resetPage();
         params.page = String.valueOf(page);
         showProgress();

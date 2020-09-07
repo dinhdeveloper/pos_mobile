@@ -68,7 +68,7 @@
             android:background="@drawable/custom_edittext_background_login"
             android:layout_marginVertical="@dimen/dp5"
             android:layout_width="250dp"
-            android:layout_height="50dp"/>
+            android:layout_height="45dp"/>
 
 
         <EditText
@@ -85,7 +85,7 @@
             android:background="@drawable/custom_edittext_background_login"
             android:layout_marginVertical="@dimen/dp5"
             android:layout_width="250dp"
-            android:layout_height="50dp"/>
+            android:layout_height="45dp"/>
 
         <EditText
             android:id="@+id/edtLoginPassowrd"
@@ -100,7 +100,7 @@
             android:background="@drawable/custom_background_edittext_password_login"
             android:layout_marginVertical="@dimen/dp10"
             android:layout_width="250dp"
-            android:layout_height="50dp"/>
+            android:layout_height="45dp"/>
 
         <LinearLayout
             android:id="@+id/btnLoginButton"

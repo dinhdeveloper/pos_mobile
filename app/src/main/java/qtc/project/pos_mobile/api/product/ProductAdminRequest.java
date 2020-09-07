@@ -37,6 +37,7 @@ interface Service {
 
 public static class ApiParams extends BaseApiParams {
     public String detect;
+    public String id_business;
     public String id_product;
     public String name;
     public String category_id;

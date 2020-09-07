@@ -36,6 +36,7 @@ public class RequestResetPassword extends ApiRequest<RequestResetPassword.Servic
 
     public static class ApiParams extends BaseApiParams {
         String detect;
+        public String id_business;
         public String new_password;
         public String phone_number;
     }

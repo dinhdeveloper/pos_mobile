@@ -7,6 +7,7 @@ import java.util.List;
 public class OrderModel extends BaseResponseModel {
 
     private String id_order;
+    private String id_business;
     private String order_id_code;
     private String order_created_date;
     private String order_status;
@@ -40,6 +41,14 @@ public class OrderModel extends BaseResponseModel {
 
     public void setId_order(String id_order) {
         this.id_order = id_order;
+    }
+
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
     }
 
     public String getOrder_id_code() {

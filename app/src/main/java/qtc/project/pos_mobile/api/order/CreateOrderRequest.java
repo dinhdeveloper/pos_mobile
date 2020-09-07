@@ -37,6 +37,7 @@ public class CreateOrderRequest extends ApiRequest<CreateOrderRequest.Service, B
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String employee_id;
         public String id_customer;
         public String id_product_pack;

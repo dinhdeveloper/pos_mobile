@@ -35,6 +35,7 @@ public class RequestCheckPhoneExists extends ApiRequest<RequestCheckPhoneExists.
 
     public static class ApiParams extends BaseApiParams {
         String detect;
+        public String id_business;
         public String phone_number;
     }
 }

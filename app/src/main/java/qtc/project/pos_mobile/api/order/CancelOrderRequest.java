@@ -37,6 +37,7 @@ public class CancelOrderRequest extends ApiRequest<CancelOrderRequest.Service, B
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String id_order;
     }
 }

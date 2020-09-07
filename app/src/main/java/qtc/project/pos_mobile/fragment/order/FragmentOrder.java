@@ -38,6 +38,7 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
         showProgress();
         resetPage();
         OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.page = String.valueOf(page);
         AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {
             @Override
@@ -118,6 +119,7 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
     public void searchOrder(String search) {
         showProgress();
         OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.order_code = search;
 
         AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {
@@ -171,6 +173,7 @@ public class FragmentOrder extends BaseFragment<FragmentOrderViewInterface, Base
     private void requestDataTwo() {
         showProgress();
         OrderRequest.ApiParams params = new OrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         resetPage();
         params.page = String.valueOf(page);
         AppProvider.getApiManagement().call(OrderRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<OrderModel>>() {

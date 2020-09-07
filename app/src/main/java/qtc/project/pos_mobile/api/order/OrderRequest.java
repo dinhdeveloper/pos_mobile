@@ -37,6 +37,7 @@ public class OrderRequest extends ApiRequest<OrderRequest.Service, BaseResponseM
 
     public static class ApiParams extends BaseApiParams {
         public String detect;
+        public String id_business;
         public String time_filter;
         public String order_id;
         public String order_code;

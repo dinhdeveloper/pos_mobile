@@ -4,6 +4,7 @@ import java.io.Serializable;
 
 public class ListOrderModel implements Serializable {
     private String id;
+    private String id_business;
     private String customer_id;
     private String nameProduct;
     private String quantityProduct;
@@ -17,6 +18,14 @@ public class ListOrderModel implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
     }
 
     public String getCustomer_id() {

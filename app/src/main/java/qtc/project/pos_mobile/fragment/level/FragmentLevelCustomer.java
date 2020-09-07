@@ -32,6 +32,7 @@ public class FragmentLevelCustomer extends BaseFragment<FragmentLevelCustomerVie
     private void requestDataLevelCustomer() {
         showProgress();
         LevelCustomerRequest.ApiParams params = new LevelCustomerRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         AppProvider.getApiManagement().call(LevelCustomerRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<LevelCustomerModel>>() {
             @Override
             public void onSuccess(BaseResponseModel<LevelCustomerModel> body) {

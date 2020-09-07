@@ -31,6 +31,26 @@ LoginView extends BaseView<LoginView.UiContainer> implements LoginViewInterface 
 
         KeyboardUtils.setupUI(getView(),activity);
 
+        ui.edtLoginIdShop.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                if (ui.edtLoginIdShop.getText().length() > 0) {
+                    ui.edtLoginIdShop.setError(null);
+                }
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                if (ui.edtLoginIdShop.getText().length() > 0) {
+                    ui.edtLoginIdShop.setError(null);
+                }
+            }
+        });
+
         ui.edtLoginName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -90,12 +110,17 @@ LoginView extends BaseView<LoginView.UiContainer> implements LoginViewInterface 
         if (!TextUtils.isEmpty(ui.edtLoginName.getText()) && !TextUtils
                 .isEmpty(ui.edtLoginName.getText())) {
 
-            callback.onClickLogin(ui.edtLoginName.getText()
+            callback.onClickLogin(ui.edtLoginIdShop.getText().toString(),ui.edtLoginName.getText()
                     .toString(), ui.edtLoginPassowrd
                     .getText()
                     .toString());
-        } else if (TextUtils.isEmpty(ui.edtLoginName.getText())) {
-            ui.edtLoginName.setError("Đăng nhập");
+        }
+        else if (TextUtils.isEmpty(ui.edtLoginIdShop.getText())) {
+            ui.edtLoginIdShop.setError("Mã cửa hàng");
+            ui.edtLoginIdShop.requestFocus();
+        }
+        else if (TextUtils.isEmpty(ui.edtLoginName.getText())) {
+            ui.edtLoginName.setError("Tên đăng nhập");
             ui.edtLoginName.requestFocus();
         } else {
             ui.edtLoginPassowrd.setError("Mật khẩu");

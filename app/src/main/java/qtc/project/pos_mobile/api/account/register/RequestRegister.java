@@ -38,6 +38,7 @@ public class RequestRegister extends ApiRequest<RequestRegister.Service, BaseRes
 
     public static class ApiParams extends BaseApiParams {
         String detect;
+        public String id_business;
         public String phone_number;
         public String password;
         public String last_name;

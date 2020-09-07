@@ -7,6 +7,7 @@ import java.util.List;
 public class ProductModel extends BaseResponseModel{
 
     private String id="";
+    private String id_business="";
     private String id_code="";
     private String name="";
     private String description="";
@@ -25,6 +26,14 @@ public class ProductModel extends BaseResponseModel{
 
     public void setQuantity_safetystock(String quantity_safetystock) {
         this.quantity_safetystock = quantity_safetystock;
+    }
+
+    public String getId_business() {
+        return id_business;
+    }
+
+    public void setId_business(String id_business) {
+        this.id_business = id_business;
     }
 
     public String getSale_price() {
