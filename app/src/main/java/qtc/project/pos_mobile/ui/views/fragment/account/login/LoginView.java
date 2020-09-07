@@ -124,6 +124,9 @@ LoginView extends BaseView<LoginView.UiContainer> implements LoginViewInterface 
     }
 
     public static class UiContainer extends BaseUiContainer {
+        @UiElement(R.id.edtLoginIdShop)
+        public EditText edtLoginIdShop;
+
         @UiElement(R.id.edtLoginName)
         public EditText edtLoginName;
 

@@ -90,6 +90,7 @@
 
     <color name="dangnhap">#726A95</color>
     <color name="edittextpassword">#BDBDBD</color>
+    <color name="edittextpassword2">#828282</color>
     <color name="colorYellow">#FFC107</color>
     <color name="colorYellowTwo">#E6CC7C</color>
     <color name="colorText">#000000</color>
