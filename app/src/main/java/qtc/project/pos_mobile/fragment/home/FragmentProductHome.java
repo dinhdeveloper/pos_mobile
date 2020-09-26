@@ -132,6 +132,7 @@ public class FragmentProductHome extends BaseFragment<FragmentProductHomeViewInt
     public void searchProduct(String search) {
         showProgress();
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         params.product = search;
         AppProvider.getApiManagement().call(ProductRequest.class, params, new ApiRequest.ApiCallback<BaseResponseModel<ProductModel>>() {
             @Override
@@ -159,6 +160,7 @@ public class FragmentProductHome extends BaseFragment<FragmentProductHomeViewInt
     @Override
     public void callAllData() {
         ProductRequest.ApiParams params = new ProductRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         resetPage();
         params.page = String.valueOf(page);
         showProgress();

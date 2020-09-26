@@ -93,6 +93,7 @@ public class FragmentHome extends BaseFragment<FragmentHomeViewInterface, BasePa
     public void tinhTien(ArrayList<ListOrderModel> arList, String id_customer, String tongtien, String discount) {
         showProgress();
         CreateOrderRequest.ApiParams params = new CreateOrderRequest.ApiParams();
+        params.id_business = AppProvider.getPreferences().getUserModel().getId_business();
         StringBuilder id_product_pack = new StringBuilder();
         StringBuilder quantity_product_pack = new StringBuilder();
         StringBuilder price_product_pack = new StringBuilder();

@@ -17,7 +17,7 @@ import qtc.project.pos_mobile.ui.views.fragment.customer.detail.FragmentCustomer
 import qtc.project.pos_mobile.ui.views.fragment.customer.detail.FragmentCustomerDetailViewCallback;
 import qtc.project.pos_mobile.ui.views.fragment.customer.detail.FragmentCustomerDetailViewInterface;
 
-public class FragmentCustomerDetail extends BaseFragment<FragmentCustomerDetailViewInterface, BaseParameters> implements FragmentCustomerDetailViewCallback {
+    public class FragmentCustomerDetail extends BaseFragment<FragmentCustomerDetailViewInterface, BaseParameters> implements FragmentCustomerDetailViewCallback {
    HomeActivity activity;
 
    public static FragmentCustomerDetail newInstance(CustomerModel model){

@@ -319,127 +319,127 @@ public class HomeAdminActivity extends BaseFragmentActivity<HomeAdminActivityVie
 //                });
 
         FullScreencall();
-        replaceFragment(new FragmentHome(), true, Animation.SLIDE_IN_OUT);
+        //replaceFragment(new FragmentHome(), true, Animation.SLIDE_IN_OUT);
     }
 
 
     @Override
     public void onBackPressed() {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentHome) {
-            super.onBackPressed();
-        } else if (baseFragment instanceof FragmentSanPhamBanChay) {
-            checkBack();
-        } else if (baseFragment instanceof FragmentOrderManager) {
-            checkBack();
-        } else if (baseFragment instanceof FragmentBaoCaoXuatNhapKho) {
-            checkBack();
-        } else if (baseFragment instanceof FragmentDoiTraHangHoa) {
-            checkBack();
-        }
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentHome) {
+//            super.onBackPressed();
+//        } else if (baseFragment instanceof FragmentSanPhamBanChay) {
+//            checkBack();
+//        } else if (baseFragment instanceof FragmentOrderManager) {
+//            checkBack();
+//        } else if (baseFragment instanceof FragmentBaoCaoXuatNhapKho) {
+//            checkBack();
+//        } else if (baseFragment instanceof FragmentDoiTraHangHoa) {
+//            checkBack();
+//        }
     }
 
-    public void setDataSearchProduct(ProductListModel[] list, String name, String id) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentProductList) {
-            ((FragmentProductList) baseFragment).setDataSearchProduct(list, name, id);
-        }
-        if (baseFragment instanceof FragmentFilterSanPham) {
-            ((FragmentFilterSanPham) baseFragment).setOnBack();
-        }
-    }
-
-    public void setDataNhaCungUng(SupplierModel model) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentChiTietLoHang) {
-            ((FragmentChiTietLoHang) baseFragment).setDataNhaCungUng(model);
-        }
-
-        if (baseFragment instanceof FragmentCreateLoHang) {
-            ((FragmentCreateLoHang) baseFragment).setDataNhaCungUng(model);
-        }
-
-        if (baseFragment instanceof FragmentDonTraHang) {
-            ((FragmentDonTraHang) baseFragment).setOnBack();
-        }
-    }
-
-    public void setDataProduct(ProductListModel model) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentCreateLoHang) {
-            ((FragmentCreateLoHang) baseFragment).setDataProduct(model);
-        }
+//    public void setDataSearchProduct(ProductListModel[] list, String name, String id) {
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentProductList) {
+//            ((FragmentProductList) baseFragment).setDataSearchProduct(list, name, id);
+//        }
+//        if (baseFragment instanceof FragmentFilterSanPham) {
+//            ((FragmentFilterSanPham) baseFragment).setOnBack();
+//        }
+//    }
+//
+//    public void setDataNhaCungUng(SupplierModel model) {
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentChiTietLoHang) {
+//            ((FragmentChiTietLoHang) baseFragment).setDataNhaCungUng(model);
+//        }
+//
 //        if (baseFragment instanceof FragmentCreateLoHang) {
-//            ((FragmentCreateLoHang) baseFragment).setOnBack();
+//            ((FragmentCreateLoHang) baseFragment).setDataNhaCungUng(model);
 //        }
-    }
-
-    public void setDataDate(String nam, String thang, int ngay) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentTongDoanhThu) {
-            ((FragmentTongDoanhThu) baseFragment).filterDataTheoThang(nam, thang, ngay);
-        }
-
-        if (baseFragment instanceof FragmentTK_TonKho_VS_DoanhThu) {
-            ((FragmentTK_TonKho_VS_DoanhThu) baseFragment).filterDataDate(nam, thang, ngay);
-        }
-
-        if (baseFragment instanceof FragmentDoanhThuTheoKhachHang) {
-            ((FragmentDoanhThuTheoKhachHang) baseFragment).filterDataTheoThang(nam, thang, ngay);
-        }
-
-        if (baseFragment instanceof FragmentDoanhThuTheoSp) {
-            ((FragmentDoanhThuTheoSp) baseFragment).filterDataTheoThang(nam, thang, ngay);
-        }
-
-
-        if (baseFragment instanceof FragmentTomTatDoanhThu) {
-            ((FragmentTomTatDoanhThu) baseFragment).onBackProgress();
-        }
-    }
-
-    public void setDataYear(String nam) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentThongKe) {
-            ((FragmentThongKe) baseFragment).filterDataYear(nam);
-        }
-
-        if (baseFragment instanceof FragmentDoanhThuTheoKhachHang) {
-            ((FragmentDoanhThuTheoKhachHang) baseFragment).filterDataYear(nam);
-        }
-        if (baseFragment instanceof FragmentDoanhThuTheoSp) {
-            ((FragmentDoanhThuTheoSp) baseFragment).filterDataYear(nam);
-        }
-
-        if (baseFragment instanceof FragmentTomTatDoanhThu) {
-            ((FragmentTomTatDoanhThu) baseFragment).onBackProgress();
-        }
-    }
-
-    public void setDataDateSP_BChay(String nam, String thang) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentSanPhamBanChay) {
-            ((FragmentSanPhamBanChay) baseFragment).filterDataTheoThang(nam, thang);
-        }
-
-        if (baseFragment instanceof FragmentBaoCaoXuatNhapKho) {
-            ((FragmentBaoCaoXuatNhapKho) baseFragment).filterDataDate(nam, thang);
-        }
-
+//
+//        if (baseFragment instanceof FragmentDonTraHang) {
+//            ((FragmentDonTraHang) baseFragment).setOnBack();
+//        }
+//    }
+//
+//    public void setDataProduct(ProductListModel model) {
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentCreateLoHang) {
+//            ((FragmentCreateLoHang) baseFragment).setDataProduct(model);
+//        }
+////        if (baseFragment instanceof FragmentCreateLoHang) {
+////            ((FragmentCreateLoHang) baseFragment).setOnBack();
+////        }
+//    }
+//
+//    public void setDataDate(String nam, String thang, int ngay) {
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentTongDoanhThu) {
+//            ((FragmentTongDoanhThu) baseFragment).filterDataTheoThang(nam, thang, ngay);
+//        }
+//
+//        if (baseFragment instanceof FragmentTK_TonKho_VS_DoanhThu) {
+//            ((FragmentTK_TonKho_VS_DoanhThu) baseFragment).filterDataDate(nam, thang, ngay);
+//        }
+//
+//        if (baseFragment instanceof FragmentDoanhThuTheoKhachHang) {
+//            ((FragmentDoanhThuTheoKhachHang) baseFragment).filterDataTheoThang(nam, thang, ngay);
+//        }
+//
+//        if (baseFragment instanceof FragmentDoanhThuTheoSp) {
+//            ((FragmentDoanhThuTheoSp) baseFragment).filterDataTheoThang(nam, thang, ngay);
+//        }
+//
+//
+//        if (baseFragment instanceof FragmentTomTatDoanhThu) {
+//            ((FragmentTomTatDoanhThu) baseFragment).onBackProgress();
+//        }
+//    }
+//
+//    public void setDataYear(String nam) {
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentThongKe) {
+//            ((FragmentThongKe) baseFragment).filterDataYear(nam);
+//        }
+//
+//        if (baseFragment instanceof FragmentDoanhThuTheoKhachHang) {
+//            ((FragmentDoanhThuTheoKhachHang) baseFragment).filterDataYear(nam);
+//        }
+//        if (baseFragment instanceof FragmentDoanhThuTheoSp) {
+//            ((FragmentDoanhThuTheoSp) baseFragment).filterDataYear(nam);
+//        }
+//
+//        if (baseFragment instanceof FragmentTomTatDoanhThu) {
+//            ((FragmentTomTatDoanhThu) baseFragment).onBackProgress();
+//        }
+//    }
+//
+//    public void setDataDateSP_BChay(String nam, String thang) {
+//        BaseFragment baseFragment = getCurrentFragment();
 //        if (baseFragment instanceof FragmentSanPhamBanChay) {
-//            ((FragmentSanPhamBanChay) baseFragment).onBackProgress();
+//            ((FragmentSanPhamBanChay) baseFragment).filterDataTheoThang(nam, thang);
 //        }
-    }
-
-    public void setDataDateOrder(String dateStartSelected, String dateEndSelected) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentOrderManager) {
-            ((FragmentOrderManager) baseFragment).filterDataDate(dateStartSelected, dateEndSelected);
-        }
+//
+//        if (baseFragment instanceof FragmentBaoCaoXuatNhapKho) {
+//            ((FragmentBaoCaoXuatNhapKho) baseFragment).filterDataDate(nam, thang);
+//        }
+//
+////        if (baseFragment instanceof FragmentSanPhamBanChay) {
+////            ((FragmentSanPhamBanChay) baseFragment).onBackProgress();
+////        }
+//    }
+//
+//    public void setDataDateOrder(String dateStartSelected, String dateEndSelected) {
+//        BaseFragment baseFragment = getCurrentFragment();
 //        if (baseFragment instanceof FragmentOrderManager) {
-//            ((FragmentOrderManager) baseFragment).onBackProgress();
+//            ((FragmentOrderManager) baseFragment).filterDataDate(dateStartSelected, dateEndSelected);
 //        }
-    }
+////        if (baseFragment instanceof FragmentOrderManager) {
+////            ((FragmentOrderManager) baseFragment).onBackProgress();
+////        }
+//    }
 
     private int isShowContainer = 0;
 
@@ -532,7 +532,7 @@ public class HomeAdminActivity extends BaseFragmentActivity<HomeAdminActivityVie
 
     @Override
     public void goToFragmentInfoUser() {
-        replaceFragment(new FragmentThongTinUser(),true,null);
+       // replaceFragment(new FragmentThongTinUser(),true,null);
     }
 
     public void FullScreencall() {
@@ -755,9 +755,9 @@ public class HomeAdminActivity extends BaseFragmentActivity<HomeAdminActivityVie
 
             }
         } else if (requestCode == MY_BARCODE_PERMISSION_CODE && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            BaseFragment baseFragment = getCurrentFragment();
-            if (baseFragment instanceof FragmentProductListDetail)
-                ((FragmentProductListDetail) baseFragment).gotoQr_BarcodeActivity();
+//            BaseFragment baseFragment = getCurrentFragment();
+//            if (baseFragment instanceof FragmentProductListDetail)
+//                ((FragmentProductListDetail) baseFragment).gotoQr_BarcodeActivity();
         }
     }
 
@@ -766,13 +766,13 @@ public class HomeAdminActivity extends BaseFragmentActivity<HomeAdminActivityVie
         @Override
         public void PermissionGranted(int request_code) {
 
-            Intent intent = new Intent(HomeActivity.this, Gallery.class);
-            // Set the title
-            intent.putExtra("title", "Chọn hình ảnh");
-            // Mode 1 for both images and videos selection, 2 for images only and 3 for videos!
-            intent.putExtra("mode", 2);
-            intent.putExtra("maxSelection", 1); // Optional
-            startActivityForResult(intent, OPEN_MEDIA_PICKER);
+//            //Intent intent = new Intent(HomeActivity.this, Gallery.class);
+//            // Set the title
+//            intent.putExtra("title", "Chọn hình ảnh");
+//            // Mode 1 for both images and videos selection, 2 for images only and 3 for videos!
+//            intent.putExtra("mode", 2);
+//            intent.putExtra("maxSelection", 1); // Optional
+//            startActivityForResult(intent, OPEN_MEDIA_PICKER);
 
         }
 
@@ -869,76 +869,76 @@ public class HomeAdminActivity extends BaseFragmentActivity<HomeAdminActivityVie
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
-        if (requestCode == OPEN_MEDIA_PICKER) {
-            // Make sure the request was successful
-            if (resultCode == RESULT_OK && data != null) {
-                ArrayList<String> selectionResult = data.getStringArrayListExtra("result");
-                if (selectionResult != null && selectionResult.size() > 0) {
-                    BaseFragment fragment = getCurrentFragment();
-                    if (fragment instanceof FragmentCategoryProductDetail) {
-                        ((FragmentCategoryProductDetail) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                    if (fragment instanceof FragmentCreateProductCategory) {
-                        ((FragmentCreateProductCategory) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                    if (fragment instanceof FragmentLevelCustomerDetail) {
-                        ((FragmentLevelCustomerDetail) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                    if (fragment instanceof FragmentCreateLevelCustomer) {
-                        ((FragmentCreateLevelCustomer) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                    if (fragment instanceof FragmentProductListDetail) {
-                        ((FragmentProductListDetail) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                    if (fragment instanceof FragmentCreateProduct) {
-                        ((FragmentCreateProduct) fragment).setImageSelected(selectionResult.get(0));
-                    }
-                }
-            }
-        } else if (requestCode == CAMERA_REQUEST) {
-            if (resultCode == RESULT_OK) {
-                BaseFragment fragment = getCurrentFragment();
-
-                if (fragment instanceof FragmentCategoryProductDetail) {
-                    if (photoFile != null)
-                        ((FragmentCategoryProductDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-                if (fragment instanceof FragmentCreateProductCategory) {
-                    if (photoFile != null)
-                        ((FragmentCreateProductCategory) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-                if (fragment instanceof FragmentLevelCustomerDetail) {
-                    if (photoFile != null)
-                        ((FragmentLevelCustomerDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-                if (fragment instanceof FragmentCreateLevelCustomer) {
-                    if (photoFile != null)
-                        ((FragmentCreateLevelCustomer) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-                if (fragment instanceof FragmentProductListDetail) {
-                    if (photoFile != null)
-                        ((FragmentProductListDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-                if (fragment instanceof FragmentCreateProduct) {
-                    if (photoFile != null)
-                        ((FragmentCreateProduct) fragment).setImageSelected(photoFile.getAbsolutePath());
-                }
-            }
-        } else if (requestCode == EMAIL_SEND) {
-            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
-                BaseFragment fragment = getCurrentFragment();
-
-//                if (fragment instanceof FragmentStatictisReportDetail) {
-//                    ((FragmentStatictisReportDetail) fragment).deleteTempMedia();
+//        if (requestCode == OPEN_MEDIA_PICKER) {
+//            // Make sure the request was successful
+//            if (resultCode == RESULT_OK && data != null) {
+//                ArrayList<String> selectionResult = data.getStringArrayListExtra("result");
+//                if (selectionResult != null && selectionResult.size() > 0) {
+//                    BaseFragment fragment = getCurrentFragment();
+//                    if (fragment instanceof FragmentCategoryProductDetail) {
+//                        ((FragmentCategoryProductDetail) fragment).setImageSelected(selectionResult.get(0));
+//                    }
+//                    if (fragment instanceof FragmentCreateProductCategory) {
+//                        ((FragmentCreateProductCategory) fragment).setImageSelected(selectionResult.get(0));
+//                    }
+//                    if (fragment instanceof FragmentLevelCustomerDetail) {
+//                        ((FragmentLevelCustomerDetail) fragment).setImageSelected(selectionResult.get(0));
+//                    }
+//                    if (fragment instanceof FragmentCreateLevelCustomer) {
+//                        ((FragmentCreateLevelCustomer) fragment).setImageSelected(selectionResult.get(0));
+//                    }
+//                    if (fragment instanceof FragmentProductListDetail) {
+//                        ((FragmentProductListDetail) fragment).setImageSelected(selectionResult.get(0));
+//                    }
+//                    if (fragment instanceof FragmentCreateProduct) {
+//                        ((FragmentCreateProduct) fragment).setImageSelected(selectionResult.get(0));
+//                    }
 //                }
-            }
-        }
+//            }
+//        } else if (requestCode == CAMERA_REQUEST) {
+//            if (resultCode == RESULT_OK) {
+//                BaseFragment fragment = getCurrentFragment();
+//
+//                if (fragment instanceof FragmentCategoryProductDetail) {
+//                    if (photoFile != null)
+//                        ((FragmentCategoryProductDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//                if (fragment instanceof FragmentCreateProductCategory) {
+//                    if (photoFile != null)
+//                        ((FragmentCreateProductCategory) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//                if (fragment instanceof FragmentLevelCustomerDetail) {
+//                    if (photoFile != null)
+//                        ((FragmentLevelCustomerDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//                if (fragment instanceof FragmentCreateLevelCustomer) {
+//                    if (photoFile != null)
+//                        ((FragmentCreateLevelCustomer) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//                if (fragment instanceof FragmentProductListDetail) {
+//                    if (photoFile != null)
+//                        ((FragmentProductListDetail) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//                if (fragment instanceof FragmentCreateProduct) {
+//                    if (photoFile != null)
+//                        ((FragmentCreateProduct) fragment).setImageSelected(photoFile.getAbsolutePath());
+//                }
+//            }
+//        } else if (requestCode == EMAIL_SEND) {
+//            if (resultCode == RESULT_OK || resultCode == RESULT_CANCELED) {
+//                BaseFragment fragment = getCurrentFragment();
+//
+////                if (fragment instanceof FragmentStatictisReportDetail) {
+////                    ((FragmentStatictisReportDetail) fragment).deleteTempMedia();
+////                }
+//            }
+//        }
     }
 
     public void setDataSearch(String thang, String nam) {
-        BaseFragment baseFragment = getCurrentFragment();
-        if (baseFragment instanceof FragmentDoiTraHangHoa) {
-            ((FragmentDoiTraHangHoa) baseFragment).filterDataDate(thang, nam);
-        }
+//        BaseFragment baseFragment = getCurrentFragment();
+//        if (baseFragment instanceof FragmentDoiTraHangHoa) {
+//            ((FragmentDoiTraHangHoa) baseFragment).filterDataDate(thang, nam);
+//        }
     }
 }

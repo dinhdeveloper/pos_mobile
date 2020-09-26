@@ -103,9 +103,9 @@ public class BillActivity extends Activity {
                 outputStream.write(printformat);
 
 
-                printPhoto(R.drawable.company);
+                //printPhoto(R.drawable.company);
                 printNewLine();
-                printCustom("QTC TEK", 1, 1);
+                printCustom("QTC TEK", 2, 1);
                 printNewLine();
                 printCustom(AccentRemove.removeAccent("Binh Thanh, TP. HCM"), 0, 1);
                 printCustom("Hot Line: +8490909009", 0, 1);
@@ -146,20 +146,22 @@ public class BillActivity extends Activity {
                         String price = decimalFormat.format(Long.valueOf(list.get(i).getPriceProduct()));
                         String quantity = list.get(i).getQuantityProduct();
 
-                        printCustom((i + 1) + ". " + name + "   " + quantity, 0, 0);
+                        printCustom((i + 1) + ". " + name, 0, 0);
+                        printNewLine();
+                        printCustom("x"+quantity, 0, 0);
+                        printNewLine();
                         printCustom(price, 0, 2);
-                        printCustom("-----------------------", 0, 1);
                         printNewLine();
                         temp = Long.valueOf(list.get(i).getPriceProduct()) * Integer.valueOf(list.get(i).getQuantityProduct());
                         thanhtien += temp;
                     }
-
+                    printCustom("-----------------------", 0, 1);
                     //long tien_giam = 100 - (((tien_khach_dua - tien_thoi_lai) * 100) / thanhtien);
 
                     long phantram_phaitra = (Long.valueOf(tongtienphaitra) * 100) / thanhtien;
                     long phantram_giamgia = 100 - phantram_phaitra;
 
-                    long tien_giam = ((phantram_giamgia*thanhtien)/100);
+                    long tien_giam = ((phantram_giamgia * thanhtien) / 100);
 
                     printCustom("Tong: " + decimalFormat.format(thanhtien), 1, 0);
                     printNewLine();
@@ -178,9 +180,9 @@ public class BillActivity extends Activity {
 
                     printCustom("Xin Cam On Quy Khach", 0, 1);
                     printCustom("Hen Gap Lai", 0, 1);
-                    printCustom("",0,1);
-                    printCustom("",0,1);
-                    printCustom("",0,1);
+                    printCustom("", 0, 1);
+                    printCustom("", 0, 1);
+                    printCustom("", 0, 1);
                 }
                 outputStream.flush();
             } catch (IOException e) {
@@ -406,6 +408,7 @@ public class BillActivity extends Activity {
             e.printStackTrace();
         }
     }
+
     public void FullScreencall() {
         if (Build.VERSION.SDK_INT > 11 && Build.VERSION.SDK_INT < 19) { // lower api
             View v = this.getWindow().getDecorView();

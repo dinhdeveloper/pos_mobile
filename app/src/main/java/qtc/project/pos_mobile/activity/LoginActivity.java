@@ -174,14 +174,14 @@ public class LoginActivity extends BaseFragmentActivity<LoginViewInterface, Base
     }
 
     private void goToHome() {
-        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("2")){
+        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("1")){
             startActivity(new Intent(LoginActivity.this, HomeActivity.class));
             finish();
         }
-        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("2")){
-            startActivity(new Intent(LoginActivity.this, HomeAdminActivity.class));
-            finish();
-        }
+//        if (AppProvider.getPreferences().getUserModel().getLevel().equalsIgnoreCase("2")){
+//            startActivity(new Intent(LoginActivity.this, HomeAdminActivity.class));
+//            finish();
+//        }
         else {
             showAlert("Bạn không đủ quyền vào ứng dụng",KAlertDialog.ERROR_TYPE);
         }

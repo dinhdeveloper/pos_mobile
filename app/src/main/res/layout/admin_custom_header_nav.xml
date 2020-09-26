@@ -17,13 +17,11 @@
         <LinearLayout
             android:layout_gravity="center"
             android:gravity="center"
-            android:background="@drawable/custom_background_icon_persion"
             android:layout_width="80dp"
             android:layout_height="80dp">
             <ImageView
                 android:id="@+id/image_em"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_icon_persion"
                 android:layout_width="60dp"
                 android:layout_height="60dp"/>
         </LinearLayout>
@@ -38,7 +36,6 @@
                 android:id="@+id/full_name_employee"
                 android:layout_marginVertical="@dimen/dp10"
                 android:text="TRAN CANH DINH"
-                android:textColor="@color/hinhnen_login"
                 android:textStyle="bold"
                 android:textAllCaps="true"
                 android:textSize="14dp"
@@ -50,7 +47,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:src="@drawable/ic_icon_admin"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>
                 <TextView
@@ -81,7 +77,6 @@
             <ImageView
                 android:layout_marginLeft="@dimen/dp5"
                 android:layout_gravity="center"
-                android:src="@drawable/ic_icon_thongtintaikhoan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
@@ -107,7 +102,6 @@
             android:layout_height="wrap_content">
 
             <ImageView
-                android:src="@drawable/ic_baseline_lock_24"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"/>
             <TextView
